@@ -307,6 +307,7 @@ INSTALLED_APPS = [
     'template_timings_panel',
     'compressor',       # Oscar's templates use compressor
     'apps.gateway',     # For allowing dashboard access
+    'apps.designer',
     'widget_tweaks',
 ]
 from oscar import get_core_apps
@@ -426,7 +427,7 @@ OSCAR_ORDER_STATUS_CASCADE = {
 
 USE_LESS = False
 
-COMPRESS_ENABLED = True
+COMPRESS_ENABLED = False
 COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),
 )
