@@ -1,0 +1,133 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load staticfiles %}
+
+
+{% block header %}{% endblock %}
+
+{% block column_left %}
+{% endblock %}
+
+{% block content %}
+ <div id="layout">
+        <header class="header clearfix">     
+        </header>
+
+        {% block content_wrapper %}
+        <div class="page">
+		  	<div class="t-image">
+              <img src="{% static "header-bg-about.jpg" %}" alt="" />
+              <span class="ban-t">WUYI design:<span class='spacer'></span><span class='spacer'></span>Build your own T-shirt!</span>
+       		</div> 
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 more-designer">
+                        <span>
+                         <a href="{% url 'catalogue:index' %}"> Check out our new T-shirt </a>                     
+                        </span>
+                    </div>
+                    <div class="col-md-6 more-tshirt">                        
+                       
+                    </div>
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                 	<div class="col-md-1">
+                       
+                	 </div>
+                    <div class="col-md-6"> 
+                         <div >
+                           <ul>
+                           	<li class="col-md-6">
+							    <article class="product_pod_home">
+        
+					            <div class="image_container">              
+					                    
+					                    <a href="/en-gb/catalogue/the-first-parent-product_48/"><img src="/media/images/products/2015/03/newtee_CWbxagW.png" alt="the first parent product" class="thumbnail"></a>
+					                             
+					            </div>
+        						<br>
+					            <h3><a href="/en-gb/catalogue/the-first-parent-product_48/" title="the first parent product">the first parent product</a></h3>
+					       				        
+					    		</article>
+							</li>
+							<li class="col-md-6">
+								    <article class="product_pod_home">
+        
+					            <div class="image_container">              
+					                    
+					                    <a href="/en-gb/catalogue/the-first-parent-product_48/"><img src="/media/images/products/2015/03/newtee_CWbxagW.png" alt="the first parent product" class="thumbnail"></a>
+					                             
+					            </div>
+        						<br>
+					            <h3><a href="/en-gb/catalogue/the-first-parent-product_48/" title="the first parent product">the first parent product</a></h3>
+					       				        
+					    		</article>
+								    
+							</li>
+							<li class="col-md-6">
+								    <article class="product_pod_home">
+        
+					            <div class="image_container">              
+					                    
+					                    <a href="/en-gb/catalogue/the-first-parent-product_48/"><img src="/media/images/products/2015/03/newtee_CWbxagW.png" alt="the first parent product" class="thumbnail"></a>
+					                             
+					            </div>
+        						<br>
+					            <h3><a href="/en-gb/catalogue/the-first-parent-product_48/" title="the first parent product">the first parent product</a></h3>
+					       				        
+					    		</article>
+							</li>
+							<li class="col-md-6">
+								   <article class="product_pod_home">
+        
+					            <div class="image_container">              
+					                    
+					                    <a href="/en-gb/catalogue/the-first-parent-product_48/"><img src="/media/images/products/2015/03/newtee_CWbxagW.png" alt="the first parent product" class="thumbnail"></a>
+					                             
+					            </div>
+        						<br>
+					            <h3><a href="/en-gb/catalogue/the-first-parent-product_48/" title="the first parent product">the first parent product</a></h3>
+					       				        
+					    		</article>
+							</li>
+                           </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                     	<div class="review-title"> Review</div>
+                       <div class="review">
+                       		<div class="quote">“Teespring has worked spectacularly 4 nonprofit causes, gets $, and buyers get to show off their support.”</div>
+                       		<div class="author">Alli Shea</div>
+                       		<div class="review-hr"> <hr></div>
+                       	</div>
+                       	<div class="review">
+                       		<div class="quote">“Teespring has worked spectacularly 4 nonprofit causes, gets $, and buyers get to show off their support.”</div>
+                       		<div class="author">Alli Shea</div>
+                       		<div class="review-hr"> <hr></div>
+                       	</div>
+                       	<div class="review">
+                       		<div class="quote">“Teespring has worked spectacularly 4 nonprofit causes, gets $, and buyers get to show off their support.”</div>
+                       		<div class="author">Alli Shea</div>
+                       		<div class="review-hr"> <hr></div>
+                       	</div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+			  <div class="jumbotron">
+			    <p>Bootstrap is the most popular HTML, CSS, and JS framework for <a class="btn btn-success bottom-start" href="/create">Start Design</a></p>
+			  </div>
+			</div>
+        </div>
+        {% endblock %} 
+
+        <div id="faux-foot"></div>
+    </div>
+{% endblock content %}

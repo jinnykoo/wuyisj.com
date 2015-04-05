@@ -1,0 +1,34 @@
+{% extends "oscar/base.html" %}
+{% load i18n compress %}
+{% load staticfiles %}
+
+{% block mainstyles %}
+    {% block styles %}
+        {% compress css %}
+            {% if use_less %}
+                <link rel="stylesheet" type="text/less" href="{% static "wuyi/less/styles.less" %}" />
+                <link rel="stylesheet" type="text/less" href="{% static "wuyi/less/responsive.less" %}" />
+            {% else %}
+                <link rel="stylesheet" type="text/css" href="{% static "wuyi/css/styles.css" %}" />
+                <link rel="stylesheet" type="text/css" href="{% static "wuyi/css/design.css" %}" />
+                <link rel="stylesheet" type="text/css" href="{% static "wuyi/css/responsive.css" %}" />
+                <link rel="stylesheet" href="{% static "wuyi/css/app.css" %}" type="text/css" media="all">
+                <link rel="stylesheet" href="{% static "wuyi/js/jquery-ui/jquery-ui.css" %}" type="text/css" media="all">
+            {% endif %}
+        {% endcompress %}
+    {% endblock %}
+{% endblock %}
+
+{% block cdn_scripts %}
+{% endblock %}
+{% block scripts %}
+{% compress js %}
+<!-- Twitter Bootstrap -->
+<script type="text/javascript" src="{% static "wuyi/js/jquery/jquery-1.9.1.min.js" %}"></script>
+<script type="text/javascript" src="{% static "wuyi/js/bootstrap/bootstrap.min.js" %}"></script>
+<script type="text/javascript" src="{% static "wuyi/js/jquery-ui/jquery-ui.min.js" %}"></script>
+<!-- Oscar
+<!-- Oscar -->
+<script src="{% static "wuyi/js/oscar/ui.js" %}" type="text/javascript" charset="utf-8"></script> 
+{% endcompress %}
+{% endblock scripts %}
