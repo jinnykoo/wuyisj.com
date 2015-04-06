@@ -12,21 +12,26 @@
                 <link rel="stylesheet" type="text/css" href="{% static "wuyi/css/styles.css" %}" />
                 <link rel="stylesheet" type="text/css" href="{% static "wuyi/css/design.css" %}" />
                 <link rel="stylesheet" type="text/css" href="{% static "wuyi/css/responsive.css" %}" />
-                <link rel="stylesheet" href="{% static "wuyi/css/app.css" %}" type="text/css" media="all">
-                <link rel="stylesheet" href="{% static "wuyi/js/jquery-ui/jquery-ui.css" %}" type="text/css" media="all">
+                <link rel="stylesheet" href="{% static "wuyi/css/design_app.css" %}" type="text/css" media="all">
+                <link rel="stylesheet" href="{% static "wuyi/css/design_style.css" %}" type="text/css" media="all">
+                <link rel="stylesheet" href="{% static "wuyi/css/jquery-ui-1.8.17.custom.css" %}" type="text/css" media="all">
+                <link rel="stylesheet" href="{% static "wuyi/css/pick-a-color-1.1.7.min.css" %}" type="text/css" media="all">
             {% endif %}
         {% endcompress %}
     {% endblock %}
 {% endblock %}
 
 {% block cdn_scripts %}
+<script type="text/javascript" src="{% static "wuyi/js/jquery/jquery-1.9.1.min.js" %}"></script>
 {% endblock %}
 {% block scripts %}
 {% compress js %}
 <!-- Twitter Bootstrap -->
-<script type="text/javascript" src="{% static "wuyi/js/jquery/jquery-1.9.1.min.js" %}"></script>
 <script type="text/javascript" src="{% static "wuyi/js/bootstrap/bootstrap.min.js" %}"></script>
-<script type="text/javascript" src="{% static "wuyi/js/jquery-ui/jquery-ui.min.js" %}"></script>
+<script type="text/javascript" src="{% static "wuyi/js/jquery-ui-1.10.3.custom.min.js" %}"></script>
+<script type="text/javascript" src="{% static "wuyi/js/pick-a-color-1.1.7.min.js" %}"></script>
+<script type="text/javascript" src="{% static "wuyi/js/tinycolor-0.9.15.min.js" %}"></script>
+<script type="text/javascript" src="{% static "wuyi/js/design_app.js" %}"></script>
 <!-- Oscar
 <!-- Oscar -->
 <script src="{% static "wuyi/js/oscar/ui.js" %}" type="text/javascript" charset="utf-8"></script> 
