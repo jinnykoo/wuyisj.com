@@ -1,0 +1,132 @@
+.tPre {
+	display: absolute;
+	margin-top:100px;
+	margin-left: 50px;
+	width: 300px;
+	height: 500px
+}
+
+.t-image { 
+   position: relative; 
+   width: 100%; /* for IE 6 */
+}
+
+.ban-t { 
+   position: absolute; 
+   top: 100px; 
+   left: 0; 
+   width: 100%; 
+}
+
+span.ban-t{ 
+   color: white; 
+   font: bold 24px/45px Helvetica, Sans-Serif; 
+   letter-spacing: -1px;  
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.2);
+   padding: 10px; 
+   max-width: 450px;
+}
+.spacer {
+   padding:0 5px;
+}
+
+.home-login a{
+	position: absolute;
+	top:10px;
+	right:20px;
+	margin-right: 10px;
+	color: white; 
+   	font: bold 18px Helvetica, Sans-Serif; 
+   	letter-spacing: -1px;  
+   	background: rgb(0, 0, 0); /* fallback color */
+   	background: rgba(0, 0, 0, 0.2);
+   	padding: 10px; 
+}
+.more-designer {
+	margin-top: 30px;
+	margin-bottom: 10px;
+	font: bold 18px Helvetica, Sans-Serif; 
+	font-style: italic;
+}
+.more-tshirt {
+	margin-top: 30px;
+	margin-bottom: 10px;
+	font: bold 18px Helvetica, Sans-Serif; 
+	font-style: italic;
+	text-align: right;
+}
+.random-t {
+	max-width: 280px;
+	max-height: 350px;
+	margin-right: 50px;
+}
+.designers {
+	margin-left: 60px;
+}
+button.get-start {
+	margin-top: 150px;
+	margin-left: 150px;
+	width: 180px;
+}
+.site_logo {
+	background-image: url('../wuyilogo.jpg');
+}
+.image_container_home {
+	width:250px;
+	height: 330px;
+	display: block;
+	padding: 4px;
+	margin-bottom: 20px;
+	line-height: 1.42857143;
+	background-color: #ffffff;
+	border: 1px solid #dddddd;
+	border-radius: 4px;
+	-webkit-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+a:hover .image_container_home {
+border-color: #428bca;
+-webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+}
+
+.quote {
+	display: block;
+	width: 300px;
+	margin: 30px 10px 10px 10px;
+	font-size: 20px;
+	font-style: italic;
+}
+
+.review {
+	opacity: 0.7;
+}
+.review-title {
+	display: block;
+	font-size: 26px;
+	font-weight: 600;
+}
+.author {
+	font-size: 16px;
+	text-align: center;
+}
+.review-hr {
+	width: 55%;
+}
+.bottom-start {
+	margin-left: 30px;
+}
+.l-form {
+	min-width: 100px;
+}
+
+.product_pod_home {
+height: 350px;
+overflow: hidden;
+text-align: center;
+margin: 20px 0;
+position: relative;
+}
