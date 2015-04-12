@@ -25,7 +25,7 @@ def create(request):
 		img_src  = request.POST.get('imagesrc')
 		img_idx  = img_src.find('base64')
 		img_data = img_src[img_idx+7:].decode("base64")
-		img_file = open("./public/photo.png", "wb")
+		img_file = open("./public/photo.jpg", "wb")
 		img_file.write(img_data)
 		img_file.close()
 
@@ -33,11 +33,11 @@ def create(request):
 		width  = int(float(request.POST.get('valuew')))
 		x = int(float(request.POST.get('valuex')))
 		y = int(float(request.POST.get('valuey')))
-		baseim = Image.open('./public/static/wuyi/plugins/images/black_front.png')
-		floatimg = Image.open('./public/photo.png')
+		baseim = Image.open('./public/media/Ublack.jpg')
+		floatimg = Image.open('./public/photo.jpg')
 		resized = floatimg.resize((width, height), Image.BILINEAR)
 		baseim.paste(resized, (x, y), resized)
-		baseim.save('./public/pasted.png')
+		baseim.save('./public/pasted.jpg')
 
 		#create a new parent product
 		product_class = ProductClass.objects.get(pk=1)
@@ -128,12 +128,12 @@ def create(request):
 		stock3.partner_sku = new_sku3
 		stock3.save()
 
-		new_file = File(open('./public/pasted.png', 'rb'))
-		new_file_back = File(open('./public/static/wuyi/plugins/images/black_back.png'))
+		new_file = File(open('./public/pasted.jpg', 'rb'))
+		new_file_back = File(open('./public/media/Ublack.jpg'))
 		im = ProductImage(product=product, display_order=0)
 		im2 = ProductImage(product=product, display_order=1)
-		im.original.save('newtee.png', new_file, save=False)
-		im2.original.save('newtee_back.png', new_file_back, save=False)
+		im.original.save('newtee.jpg', new_file, save=False)
+		im2.original.save('newtee_back.jpg', new_file_back, save=False)
 
 		im.save()
 		im2.save()
