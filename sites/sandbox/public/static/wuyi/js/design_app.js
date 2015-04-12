@@ -164,9 +164,32 @@ jQuery(document).ready(function ($) {
                     // add image to imagesContainer - e.target.result : image's source on local
                      $('#imagesContainer').prepend("<div class='images' style='z-index:9" + countImg + "'><i class='icon-remove text-error'></i><img src='" + e.target.result + "' alt='' ></div>");
                      // make images draggable and resizable using jquery UI functions
-                     $('#imagesContainer').find('img').resizable();
-                     $('#imagesContainer').find('.images').draggable();
+                     $('#imagesContainer').find('img').resizable({
+                        resize: function( event, ui ) {
+                            var height = $(".ui-wrapper").height();
+                            var width  = $(".ui-wrapper").width();
+                            $('#imgHeight').attr('value', height);
+                            $('#imgWidth').attr('value', width);
+                            console.log('h, w', height, width);
+                        }
+                     });
+                     $('#imagesContainer').find('.images').draggable({
+                        containment: "#printable",
+                        scoll:false,
+                        drag: function() {
+                            var thisPos = $(".ui-wrapper").offset();
 
+                            var parentPos = $("#Tshirtsrc").offset();
+                            var x = thisPos.left - parentPos.left;
+                            var y = thisPos.top - parentPos.top;
+                            $('#offsetx').attr('value', x);
+                            $('#offsety').attr('value', y);
+                            console.log('x, y', x, y);
+                        }
+                     });
+
+                    $('#imgsrc').attr('name', 'imagesrc');
+                    $('#imgsrc').attr('value', e.target.result);
                     countImg ++;
                     //$('#blah').css('background', 'transparent url('+e.target.result +') left top no-repeat');
                 }
