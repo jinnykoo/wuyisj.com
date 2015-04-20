@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% load i18n %}
 {% load staticfiles %}
-
+{% load product_tags %}
 
 {% block header %}{% endblock %}
 
@@ -43,61 +43,34 @@
                 	 </div>
                     <div class="col-md-6"> 
                          <div >
-                           <ul>
-                           	<li class="col-md-6">
-							    <article class="product_pod_home">
-        
-					            <div class="image_container">              
-					                    
-					                    <a href="/en-gb/catalogue/the-first-parent-product_48/"><img src="/media/images/products/2015/03/newtee_CWbxagW.png" alt="the first parent product" class="thumbnail"></a>
-					                             
-					            </div>
-        						<br>
-					            <h3><a href="/en-gb/catalogue/the-first-parent-product_48/" title="the first parent product">the first parent product</a></h3>
-					       				        
-					    		</article>
-							</li>
-							<li class="col-md-6">
-								    <article class="product_pod_home">
-        
-					            <div class="image_container">              
-					                    
-					                    <a href="/en-gb/catalogue/the-first-parent-product_48/"><img src="/media/images/products/2015/03/newtee_CWbxagW.png" alt="the first parent product" class="thumbnail"></a>
-					                             
-					            </div>
-        						<br>
-					            <h3><a href="/en-gb/catalogue/the-first-parent-product_48/" title="the first parent product">the first parent product</a></h3>
-					       				        
-					    		</article>
-								    
-							</li>
-							<li class="col-md-6">
-								    <article class="product_pod_home">
-        
-					            <div class="image_container">              
-					                    
-					                    <a href="/en-gb/catalogue/the-first-parent-product_48/"><img src="/media/images/products/2015/03/newtee_CWbxagW.png" alt="the first parent product" class="thumbnail"></a>
-					                             
-					            </div>
-        						<br>
-					            <h3><a href="/en-gb/catalogue/the-first-parent-product_48/" title="the first parent product">the first parent product</a></h3>
-					       				        
-					    		</article>
-							</li>
-							<li class="col-md-6">
-								   <article class="product_pod_home">
-        
-					            <div class="image_container">              
-					                    
-					                    <a href="/en-gb/catalogue/the-first-parent-product_48/"><img src="/media/images/products/2015/03/newtee_CWbxagW.png" alt="the first parent product" class="thumbnail"></a>
-					                             
-					            </div>
-        						<br>
-					            <h3><a href="/en-gb/catalogue/the-first-parent-product_48/" title="the first parent product">the first parent product</a></h3>
-					       				        
-					    		</article>
-							</li>
-                           </ul>
+                          {% if products %}
+                              <section>
+                                  <div>
+                                      <ol class="row">
+                                          {% for product in products %}
+                                              <li class="col-md-6">{% render_product product %}</li>
+                                          {% endfor %}
+                                      </ol>
+                                  </div>
+                              </section>
+                          {% else %}
+                              <p class="nonefound">{% trans "No products found." %}</p>
+                          {% endif %}
+                          <!--  <ul>		
+                  							<li class="col-md-6">
+                  								   <article class="product_pod_home">
+                          
+                  					            <div class="image_container">              
+                  					                    
+                  					                    <a href="/en-gb/catalogue/the-first-parent-product_48/"><img src="/media/images/products/2015/03/newtee_CWbxagW.png" alt="the first parent product" class="thumbnail"></a>
+                  					                             
+                  					            </div>
+                          						<br>
+                  					            <h3><a href="/en-gb/catalogue/the-first-parent-product_48/" title="the first parent product">the first parent product</a></h3>
+                  					       				        
+                  					    		</article>
+                  							</li>
+                           </ul> -->
                         </div>
                     </div>
                     <div class="col-md-5">

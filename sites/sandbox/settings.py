@@ -311,7 +311,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
 ]
 from oscar import get_core_apps
-INSTALLED_APPS = INSTALLED_APPS + get_core_apps()
+INSTALLED_APPS = INSTALLED_APPS + get_core_apps(['apps.promotions'])
 
 # Add Oscar's custom auth backend so users can sign in using their email
 # address.

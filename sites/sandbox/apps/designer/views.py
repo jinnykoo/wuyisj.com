@@ -33,7 +33,7 @@ def create(request):
 		width  = int(float(request.POST.get('valuew')))
 		x = int(float(request.POST.get('valuex')))
 		y = int(float(request.POST.get('valuey')))
-		baseim = Image.open('./public/media/Ublack.jpg')
+		baseim = Image.open('./public/media/black_s.jpg')
 		floatimg = Image.open('./public/photo.jpg')
 		resized = floatimg.resize((width, height), Image.BILINEAR)
 		baseim.paste(resized, (x, y), resized)
@@ -129,7 +129,7 @@ def create(request):
 		stock3.save()
 
 		new_file = File(open('./public/pasted.jpg', 'rb'))
-		new_file_back = File(open('./public/media/Ublack.jpg'))
+		new_file_back = File(open('./public/media/black_s.jpg'))
 		im = ProductImage(product=product, display_order=0)
 		im2 = ProductImage(product=product, display_order=1)
 		im.original.save('newtee.jpg', new_file, save=False)
