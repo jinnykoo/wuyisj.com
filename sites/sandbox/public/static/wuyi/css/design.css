@@ -134,3 +134,8 @@ position: relative;
 .imgTmp {
 	max-height: 456px;
 }
+
+#p-image {
+	max-width: 500px;
+	max-height: 500px;
+}
