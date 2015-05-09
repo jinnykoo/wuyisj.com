@@ -141,6 +141,6 @@ def create(request):
 		return render(request, 'designer/success.html')
 
 	else:
-		print 'else'
+		print('else')
 	
 	return render(request, 'designer/create.html', context_dict)
