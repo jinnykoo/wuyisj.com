@@ -4,6 +4,7 @@ from django.core.files import File
 from oscar.core.loading import get_class, get_classes
 from PIL import Image
 from apps.designer.models import TshirtSKU
+import base64
 
 ProductClass, Product, Category, ProductCategory = get_classes(
     'catalogue.models', ('ProductClass', 'Product', 'Category',
@@ -24,7 +25,7 @@ def create(request):
 	
 		img_src  = request.POST.get('imagesrc')
 		img_idx  = img_src.find('base64')
-		img_data = img_src[img_idx+7:].decode("base64")
+		img_data = base64.b64decode(img_src[img_idx+7:])
 		img_file = open("./public/photo.jpg", "wb")
 		img_file.write(img_data)
 		img_file.close()
@@ -33,7 +34,8 @@ def create(request):
 		width  = int(float(request.POST.get('valuew')))
 		x = int(float(request.POST.get('valuex')))
 		y = int(float(request.POST.get('valuey')))
-		baseim = Image.open('./public/media/black_s.jpg')
+		t_color = request.POST.get('valuec')
+		baseim = Image.open('./public/media/' + str(t_color))
 		floatimg = Image.open('./public/photo.jpg')
 		resized = floatimg.resize((width, height), Image.BILINEAR)
 		baseim.paste(resized, (x, y), resized)
