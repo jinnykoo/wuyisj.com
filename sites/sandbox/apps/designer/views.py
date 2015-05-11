@@ -131,7 +131,7 @@ def create(request):
 		stock3.save()
 
 		new_file = File(open('./public/pasted.jpg', 'rb'))
-		new_file_back = File(open('./public/media/black_s.jpg'))
+		new_file_back = File(open('./public/media/black_s.jpg', 'rb'))
 		im = ProductImage(product=product, display_order=0)
 		im2 = ProductImage(product=product, display_order=1)
 		im.original.save('newtee.jpg', new_file, save=False)
