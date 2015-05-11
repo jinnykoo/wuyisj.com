@@ -199,6 +199,8 @@ jQuery(document).ready(function ($) {
         // load images 
         $("#imgInp").on('change',function(){
             readURL(this); // call our function readURL
+            //Set h,w, x, y
+
         });
 
         // delete pictures
@@ -239,6 +241,13 @@ jQuery(document).ready(function ($) {
             var src = $(this).find('img').attr('src');
             //apply it on the original image to be edited
             $('#Tshirtsrc').attr('src', src);
+            if (src == '/media/Uwhite.jpg') {
+                $('#t-color').attr('value', 'white_s.jpg');
+            } else if (src == '/media/UBlack.jpg') {
+                $('#t-color').attr('value', 'black_s.jpg');
+            } else {
+                $('#t-color').attr('value', 'grey_s.jpg');
+            }
             return false;
         });
 
