@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% load i18n %}
 {% load staticfiles %}
-{% load product_tags %}
+{% load home_product_tags %}
 {% block header %}{% endblock %}
 
 {% block column_left %}
@@ -37,14 +37,14 @@
             </div>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-6"> 
+                    <div class="col-md-7"> 
                          <div >
                           {% if products %}
                               <section>
                                   <div>
                                       <ol class="row">
                                           {% for product in products %}
-                                              <li class="col-md-6">{% render_product product %}</li>
+                                              <li class="col-md-6">{% render_home_product product %}</li>
                                           {% endfor %}
                                       </ol>
                                   </div>
