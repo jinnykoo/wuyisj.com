@@ -50,7 +50,7 @@ def create(request):
 		product.description = 'this is the first parent product'
 		product.save()
 
-		# #create 3 child products
+		# #create 5 child products
 		child1 = Product()
 		child1.parent = product
 		child1.structure = Product.CHILD
@@ -66,10 +66,22 @@ def create(request):
 		child3.structure = Product.CHILD
 		child3.save()
 
+		child4 = Product()
+		child4.parent = product
+		child4.structure = Product.CHILD
+		child4.save()
+
+		child5 = Product()
+		child5.parent = product
+		child5.structure = Product.CHILD
+		child5.save()
+
 		# #create 3 corresponding attribute
 		option1 = AttributeOption.objects.get(pk=1)
 		option2 = AttributeOption.objects.get(pk=2)
 		option3 = AttributeOption.objects.get(pk=3)
+		option4 = AttributeOption.objects.get(pk=4)
+		option5 = AttributeOption.objects.get(pk=5)
 		attr = ProductAttribute.objects.get(pk=1)
 
 		attrVal1 = ProductAttributeValue()
@@ -90,12 +102,26 @@ def create(request):
 		attrVal3.value_option = option3
 		attrVal3.save()
 
+		attrVal4 = ProductAttributeValue()
+		attrVal4.attribute = attr
+		attrVal4.product = child4
+		attrVal4.value_option = option4
+		attrVal4.save()
+
+		attrVal5 = ProductAttributeValue()
+		attrVal5.attribute = attr
+		attrVal5.product = child5
+		attrVal5.value_option = option5
+		attrVal5.save()
+
 		# #create stockrecords
 		# Get the latest sku
 		latest_sku = TshirtSKU.objects.order_by('-pk')[0]
 		new_sku1 = latest_sku.sku + 1
 		new_sku2 = latest_sku.sku + 2
 		new_sku3 = latest_sku.sku + 3
+		new_sku4 = latest_sku.sku + 4
+		new_sku5 = latest_sku.sku + 5
 
 		tshirtsku = TshirtSKU()
 		tshirtsku.sku = new_sku1
@@ -108,6 +134,14 @@ def create(request):
 		tshirtsku3 = TshirtSKU()
 		tshirtsku3.sku = new_sku3
 		tshirtsku3.save()
+
+		tshirtsku4 = TshirtSKU()
+		tshirtsku4.sku = new_sku4
+		tshirtsku4.save()
+
+		tshirtsku5 = TshirtSKU()
+		tshirtsku5.sku = new_sku5
+		tshirtsku5.save()
 
 		partner = Partner.objects.get(pk=2)
 		stock1 = StockRecord()
@@ -122,6 +156,7 @@ def create(request):
 		stock2.partner = partner
 		stock2.num_in_stock = 100
 		stock2.partner_sku = new_sku2
+		stock2.save()
 
 		stock3 = StockRecord()
 		stock3.product = child3
@@ -130,8 +165,22 @@ def create(request):
 		stock3.partner_sku = new_sku3
 		stock3.save()
 
+		stock4 = StockRecord()
+		stock4.product = child4
+		stock4.partner = partner
+		stock4.num_in_stock = 100
+		stock4.partner_sku = new_sku4
+		stock4.save()
+
+		stock5 = StockRecord()
+		stock5.product = child5
+		stock5.partner = partner
+		stock5.num_in_stock = 100
+		stock5.partner_sku = new_sku5
+		stock5.save()
+
 		new_file = File(open('./public/pasted.jpg', 'rb'))
-		new_file_back = File(open('./public/media/black_s.jpg', 'rb'))
+		new_file_back = File(open('./public/media/' + str(t_color), 'rb'))
 		im = ProductImage(product=product, display_order=0)
 		im2 = ProductImage(product=product, display_order=1)
 		im.original.save('newtee.jpg', new_file, save=False)
