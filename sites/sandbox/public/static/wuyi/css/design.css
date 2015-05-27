@@ -143,3 +143,54 @@ position: relative;
 #p-image .images{
   padding-top: 30px !important;
 }
+.t-image img {
+	height: 360px;
+	float: right;
+	margin-right: 150px;
+}
+
+.carousel {
+	padding-right: 150px;
+	padding-left: 150px;
+	border-style: solid;
+	border-color: #e7e7e7;
+}
+.carousel-inner .item  img {
+	height: 360px;
+	float: right;
+}
+
+ .bn-caption {
+ 	margin-top: 50px;
+	position: absolute;
+	width: auto;
+	color: #4b5668!important;
+	font-size: 16px;
+}
+.wy-title {
+	font-size: 50px;
+}
+
+ul.inst {
+	margin-top: 30px;
+	list-style-type: disc;
+	list-style-position: inside;
+}
+.inst li {
+	margin-top: 10px;
+	font-size: 20px;
+}
+.banner-start {
+	margin-top: 310px;
+}
+#myCarousel {
+	border-style: solid;
+	border-color: #e7e7e7;
+
+}
+ol.carousel-indicators {
+	border-bottom: 1px;
+	border-style: solid;
+	border-color: #e7e7e7;
+	padding-bottom: 20px;
+}
