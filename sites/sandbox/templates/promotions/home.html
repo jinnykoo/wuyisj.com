@@ -14,15 +14,53 @@
 
         {% block content_wrapper %}
         <div class="page">
-		  	<div class="t-image">
-              <img src="{% static "header-bg-about.jpg" %}" alt="" />
-              <span class="ban-t">WUYI design:<span class='spacer'></span><span class='spacer'></span>Build your own T-shirt!</span>
-       		</div> 
+                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+              </ol>
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                  <img src="{% static "banner1.png" %}" alt="Chania">
+                  <div class="bn-caption"> 
+
+                      <div class="wy-title">
+                          無衣设计
+                      </div>
+
+                      <ul class="inst">
+                        <li>添加文字</li>
+                        <li>上传图片</li>
+                        <li>确定价格</li>
+                        <li>发布产品</li>
+                      </ul>
+                  </div>
+                  <p><a class="btn btn-primary banner-start" href="/create">开始设计</a></p>
+                </div>
+
+                <div class="item">
+                  <img src="{% static "banner2.png" %}" alt="Chania">
+                </div>
+              </div>
+
+              <!-- Left and right controls -->
+<!--               <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a> -->
+            </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 more-designer">
                         <span>
-                         <a href="{% url 'catalogue:index' %}"> Check out our new T-shirt </a>                     
+                         <a href="{% url 'catalogue:index' %}"> 查看全部商品 </a>                     
                         </span>
                     </div>
                     <div class="col-md-6 more-tshirt">                        
