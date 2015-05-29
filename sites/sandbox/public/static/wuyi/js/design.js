@@ -155,6 +155,18 @@ jQuery(document).ready(function ($) {
         //change T-shirt
         $('.tshirts a').click(function(){
             //get clicked T-shirt src
+            console.log('test');
+            var src = $(this).find('img').attr('src');
+            //apply it on the original image to be edited
+            $('#Tshirtsrc').attr('src', src);
+            return false;
+        });
+
+        //change front back
+
+        $('.t-shirts a').click(function(){
+            console.log('clicked');
+            //get clicked T-shirt src
             var src = $(this).find('img').attr('src');
             //apply it on the original image to be edited
             $('#Tshirtsrc').attr('src', src);

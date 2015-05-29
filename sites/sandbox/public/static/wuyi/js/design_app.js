@@ -3,7 +3,7 @@ jQuery(document).ready(function ($) {
         // Update text on Tshirt -- applly event on keyup
         $('#designtext').keyup(function(){
             var text = $(this).val().replace(/\r\n|\r|\n/g,"<br />");
-            $('.text p').html(text);
+            $('.designContainer .text p').html(text);
         });
 
         // ON click on the new text button : clone Next text on T-shirt and add new textarea to edit text
@@ -162,18 +162,18 @@ jQuery(document).ready(function ($) {
                 
                 reader.onload = function (e) { // on load
                     // add image to imagesContainer - e.target.result : image's source on local
-                     $('#imagesContainer').prepend("<div class='images' style='z-index:9" + countImg + "'><i class='icon-remove text-error'></i><img src='" + e.target.result + "' alt='' ></div>");
+                     $('.designContainer .imagesContainer').prepend("<div class='images' style='z-index:9" + countImg + "'><i class='icon-remove text-error'></i><img src='" + e.target.result + "' alt='' ></div>");
                      // make images draggable and resizable using jquery UI functions
-                     $('#imagesContainer').find('img').resizable({
+                     $('.designContainer .imagesContainer').find('img').resizable({
                         resize: function( event, ui ) {
                             var height = $(".ui-wrapper").height();
                             var width  = $(".ui-wrapper").width();
                             $('#imgHeight').attr('value', height);
                             $('#imgWidth').attr('value', width);
-                            console.log('h, w', height, width);
+                           // console.log('h, w', height, width);
                         }
                      });
-                     $('#imagesContainer').find('.images').draggable({
+                     $('.designContainer .imagesContainer').find('.images').draggable({
                         containment: "#printable",
                         scoll:false,
                         drag: function() {
@@ -184,7 +184,7 @@ jQuery(document).ready(function ($) {
                             var y = thisPos.top - parentPos.top;
                             $('#offsetx').attr('value', x);
                             $('#offsety').attr('value', y);
-                            console.log('x, y', x, y);
+                            //console.log('x, y', x, y);
                         }
                      });
 
@@ -248,6 +248,32 @@ jQuery(document).ready(function ($) {
             } else {
                 $('#t-color').attr('value', 'grey_s.jpg');
             }
+            return false;
+        });
+
+        $('.t-shirts a').click(function(){
+            console.log('clicked');
+            //get clicked T-shirt src
+            var stg = $('.t-staging').html();
+            var cur = $('.designContainer').html();
+            $('.designContainer').html(stg);
+            $('.t-staging').html(cur);
+
+             $('.designContainer .imagesContainer').find('.images').draggable({
+                        containment: "#printable",
+                        scoll:false,
+                        drag: function() {
+                            var thisPos = $(".ui-wrapper").offset();
+
+                            var parentPos = $("#Tshirtsrc").offset();
+                            var x = thisPos.left - parentPos.left;
+                            var y = thisPos.top - parentPos.top;
+                            $('#offsetx').attr('value', x);
+                            $('#offsety').attr('value', y);
+                            //console.log('x, y', x, y);
+                        }
+                     });
+
             return false;
         });
 
