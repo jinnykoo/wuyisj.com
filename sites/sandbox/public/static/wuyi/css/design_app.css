@@ -100,7 +100,7 @@ hr{
 /*------------------------------------------------------------------
 [ images Style ]
 */
-#imagesContainer{
+.imagesContainer{
   width: 120px;
   height: auto;
   max-width: 480px;
@@ -112,7 +112,7 @@ hr{
   right: 0;
   margin: auto;
 }
-#imagesContainer img:hover{
+.imagesContainer img:hover
   cursor: move;
 }
 .images{
