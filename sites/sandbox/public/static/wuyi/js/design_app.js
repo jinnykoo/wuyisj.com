@@ -6,54 +6,20 @@ jQuery(document).ready(function ($) {
             $('.designContainer .text p').html(text);
         });
 
-        // ON click on the new text button : clone Next text on T-shirt and add new textarea to edit text
-        var count = 2; // variable to count Texts
-
-        $('.nexText').click(function(){
-           // alert(rand(20,20));
-            //var count = 1;
-            // clone text area and change class attribute , data-id, id and value
-            $('#designtext').clone().prependTo("#texts").attr('class', 'designtext span12 designtext' + count).attr('data-id', count).attr('id', ' ').val('text ' + count);
-            // clone text on T-shirt  and make draggable
-            $('.text').clone().prependTo(".designContainer").attr('class', ' t text' + count).attr('data-id', count).attr('style', 'z-index:9' + count).css('top', Math.random()*100).draggable().find('p').text('text ' + count);
-            count++; // increment variable when new text cloned
-        });
-         // update texts on keyup event - this works on cloned texts and textarea
-         $( document ).on('keyup', '.designtext', function(){
-            // get text from text area and replace breakline with br tag
-            var text = $(this).val().replace(/\r\n|\r|\n/g,"<br />");
-            //get the data-id from text
-            var id = $(this).data('id');
-            //update text on T-shirt
-            $('.text' + id + " p").html(text);
-        });
-
         // initial Current Text element to be edited
-        var textElement = $('.designtext1 p');
+        var textElement = $('.designContainer .designtext1 p');
          // events 
 
-         // make texts draggable using jquery UI
+        // make texts draggable using jquery UI
         $(function() {
             //$( ".t" ).resizable();
-            $( ".t" ).draggable({
+            $( ".designContainer .t" ).draggable({
                 // on stop make current text the element to be edited
                 stop: function() {
                      textElement = $(this).find('p');
                   }
             });
             
-        });
-        
-        // on click on the text make current text the element to be edited (font size, color, font familly )
-        $(document).on('click', '.t p', function(){
-            textElement =  $(this);
-            //add some annimations 'bounce' using CSS3 and animate.css file
-             $('.slider , .pick-a-color-markup, .dropup').addClass('animated bounce');
-
-             setTimeout(function() {
-                    //remove annimation after 1s
-                     $('.slider , .pick-a-color-markup, .dropup').removeClass('animated bounce');
-                }, 1000);
         });
 
         // Actions to be apllayed on Texts
@@ -100,10 +66,14 @@ jQuery(document).ready(function ($) {
             max: 100, //a max value
             value: 11, // default value
             slide: function( event, ui ) { // event onslider
+                console.log("slide");
+                debugger;
                 $( ".size" ).text(ui.value + "px"); // update text on slider
-                if(textElement != null){ // if text element is not null
-                textElement.css( "font-size", ui.value); // apply value on text (font-size) using css function (jquery)
-            }
+           //      if(textElement != null){ // if text element is not null
+           //      textElement.css( "font-size", ui.value); // apply value on text (font-size) using css function (jquery)
+           // }
+
+           $('.designContainer .designtext1 p').css("font-size", ui.value);
                 }
             });
             $( ".size" ).text($( "#slider" ).slider( "value" ) +   "px"); // get default value from slider and show it to the user
@@ -112,6 +82,7 @@ jQuery(document).ready(function ($) {
             //google.load('webfont','1');
             $('#font a').click(function(){
                 // test if current text is not null ()
+                textElement =  $('.designContainer .designtext1 p');
                 if (textElement != null) {
                     // get font name from clicked element (data-font='font name')
                     var font = $(this).data('font');
@@ -166,6 +137,7 @@ jQuery(document).ready(function ($) {
                      // make images draggable and resizable using jquery UI functions
                      $('.designContainer .imagesContainer').find('img').resizable({
                         resize: function( event, ui ) {
+                            console.log('resiing');
                             var height = $(".ui-wrapper").height();
                             var width  = $(".ui-wrapper").width();
                             $('#imgHeight').attr('value', height);
@@ -228,6 +200,7 @@ jQuery(document).ready(function ($) {
             // get value from input
             var color  = $(this).val();
             // if textElement is not null
+            textElement = $('.designContainer .designtext1 p');
             if(textElement != null){
                 //apply css on the text
                 textElement.css('color','#' + color);
@@ -253,11 +226,25 @@ jQuery(document).ready(function ($) {
 
         $('.t-shirts a').click(function(){
             console.log('clicked');
+             $('.designContainer .imagesContainer').find('img').resizable("destroy"); //important!!!
             //get clicked T-shirt src
             var stg = $('.t-staging').html();
             var cur = $('.designContainer').html();
             $('.designContainer').html(stg);
             $('.t-staging').html(cur);
+
+                console.log('bind resize');
+               $('.designContainer .imagesContainer').find('img').resizable({
+                        resize: function( event, ui ) {
+                            console.log('test');
+                            var height = $(".ui-wrapper").height();
+                            var width  = $(".ui-wrapper").width();
+                            $('#imgHeight').attr('value', height);
+                            $('#imgWidth').attr('value', width);
+                           // console.log('h, w', height, width);
+                        }
+                     });
+
 
              $('.designContainer .imagesContainer').find('.images').draggable({
                         containment: "#printable",
@@ -273,6 +260,19 @@ jQuery(document).ready(function ($) {
                             //console.log('x, y', x, y);
                         }
                      });
+
+              $(function() {
+            //$( ".t" ).resizable();
+            $( ".designContainer .t" ).draggable({
+                // on stop make current text the element to be edited
+                stop: function() {
+                     textElement = $(this).find('p');
+                  }
+            });
+            
+        });
+
+
 
             return false;
         });
