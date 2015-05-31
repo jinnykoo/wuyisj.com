@@ -256,20 +256,26 @@ jQuery(document).ready(function ($) {
             var src = $(this).find('img').attr('src');
             //apply it on the original image to be edited
             $('.designContainer .Tshirtsrc').attr('src', src);
-            $('#t-color').attr('value', src);
+            $('.t-staging .Tshirtsrc').attr('src', src.replace("front", "back"));
+            var tColor = src.match(/white|grey|green|red|purple|black/g);
+            $('#t-color').attr('value', tColor[0]);
+
+            //Change selection
+            $('.t-shirts .img-front ').attr("src", src);
+            $('.t-shirts .img-back ').attr("src", src.replace("front", "back"));
+
             return false;
         });
 
-        $('.t-shirts a').click(function(){
-            console.log('clicked');
-             $('.designContainer .imagesContainer').find('img').resizable("destroy"); //important!!!
+        function react() {
+            $('.designContainer .imagesContainer').find('img').resizable("destroy"); //important!!!
             //get clicked T-shirt src
             var stg = $('.t-staging').html();
             var cur = $('.designContainer').html();
             $('.designContainer').html(stg);
             $('.t-staging').html(cur);
 
-               $('.designContainer .imagesContainer').find('img').resizable({
+            $('.designContainer .imagesContainer').find('img').resizable({
                         resize: function( event, ui ) {
                             var height = $(".ui-wrapper").height();
                             var width  = $(".ui-wrapper").width();
@@ -305,7 +311,7 @@ jQuery(document).ready(function ($) {
                         }
                      });
 
-              $(function() {
+            $(function() {
             //$( ".t" ).resizable();
             $( ".designContainer .t" ).draggable({
                 drag: function() {
@@ -331,8 +337,21 @@ jQuery(document).ready(function ($) {
             
         });
             return false;
+        }
+        $('.t-shirts .front-a').click(function() {
+            var selected = $('.designContainer .Tshirtsrc').attr("src").substr(-8, 4);
+            if (selected == "ront") {
+                return 
+            }
+            react();
         });
-
+        $('.t-shirts .back-a').click(function() {
+            var selected = $('.designContainer .Tshirtsrc').attr("src").substr(-8, 4);
+            if (selected == "back") {
+                return 
+            }
+            react();
+        });
         // apply style on file's input
 
         $('#imgInp').customFileInput({

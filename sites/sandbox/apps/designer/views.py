@@ -3,8 +3,11 @@ from django.conf import settings
 from django.core.files import File
 from oscar.core.loading import get_class, get_classes
 from PIL import Image
+from PIL import ImageFont
+from PIL import ImageDraw
 from apps.designer.models import TshirtSKU
 import base64
+import logging
 
 ProductClass, Product, Category, ProductCategory = get_classes(
     'catalogue.models', ('ProductClass', 'Product', 'Category',
@@ -31,6 +34,7 @@ def create(request):
 		img_file.write(img_data)
 		img_file.close()
 		#Back image
+
 		imgSrcBack  = request.POST.get('imagesrc-back')
 		imgIdxBack  = imgSrcBack.find('base64')
 		imgDataBack = base64.b64decode(imgSrcBack[imgIdxBack+7:])
@@ -48,7 +52,7 @@ def create(request):
 		textContent = str(request.POST.get('text-value'))
 		textSize = int(request.POST.get('text-font-size'))
 		textOffsetX = int(float(request.POST.get('text-valuex')))
-		textOffestY = int(float(request.POST.get('text-valuey')))
+		textOffsetY = int(float(request.POST.get('text-valuey')))
 		textColor = str(request.POST.get('text-color-value'))
 		textFamily = str(request.POST.get('text-font-family'))
 		t_color = request.POST.get('valuec')
@@ -62,7 +66,7 @@ def create(request):
 		textContentBack = str(request.POST.get('text-value-back'))
 		textSizeBack = int(request.POST.get('text-font-size-back'))
 		textOffsetXBack = int(float(request.POST.get('text-valuex-back')))
-		textOffestYBack = int(float(request.POST.get('text-valuey-back')))
+		textOffsetYBack = int(float(request.POST.get('text-valuey-back')))
 		textColorBack = str(request.POST.get('text-color-value-back'))
 		textFamilyBack = str(request.POST.get('text-font-family-back'))
 
@@ -72,11 +76,28 @@ def create(request):
 		baseim.paste(resized, (x, y), resized)
 		baseim.save('./public/pasted.jpg')
 
+		#Add text
+		logging.info(textOffsetX)
+		logging.info(textOffsetY)
+		font = ImageFont.truetype("/usr/share/fonts/truetype/ubuntu-font-family/Ubuntu-B.ttf",28)
+		im1 = Image.open('./public/pasted.jpg')
+		draw = ImageDraw.Draw(im1)
+		draw.text((textOffsetX, textOffsetY), textContent, font=font)
+		draw = ImageDraw.Draw(im1)
+		im1.save('./public/pasted.jpg')
+
+
 		baseImgBack = Image.open('./public/media/' + str(t_color) + '_back.jpg')
 		floatImgBack = Image.open('./public/photo_back.jpg')
 		resizedBack = floatImgBack.resize((widthBack, heightBack), Image.BILINEAR)
 		baseImgBack.paste(resizedBack, (xBack, yBack), resizedBack)
 		baseImgBack.save('./public/pasted_back.jpg')
+		#Add text
+		im2 = Image.open('./public/pasted_back.jpg')
+		drawBack = ImageDraw.Draw(im2)
+		drawBack.text((textOffsetXBack, textOffsetYBack), textContentBack)
+		drawBack = ImageDraw.Draw(im2)
+		im2.save('./public/pasted_back.jpg')
 
 		#create a new parent product
 		product_class = ProductClass.objects.get(pk=1)
