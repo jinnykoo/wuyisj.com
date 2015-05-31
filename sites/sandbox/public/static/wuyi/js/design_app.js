@@ -4,22 +4,41 @@ jQuery(document).ready(function ($) {
         $('#designtext').keyup(function(){
             var text = $(this).val().replace(/\r\n|\r|\n/g,"<br />");
             $('.designContainer .text p').html(text);
+            var selected = $('.designContainer .Tshirtsrc').attr("src").substr(-8, 4);
+            if (selected == "ront") {
+                $("#text-content").attr("value", text);
+            } else {
+                $("#text-content-back").attr("value", text);
+            }
         });
 
         // initial Current Text element to be edited
         var textElement = $('.designContainer .designtext1 p');
-         // events 
-
+       
         // make texts draggable using jquery UI
         $(function() {
             //$( ".t" ).resizable();
             $( ".designContainer .t" ).draggable({
+                drag: function() {
+                        var thisPos = $(".designContainer .t p").offset();
+
+                        var parentPos = $(".designContainer .Tshirtsrc").offset();
+                        var x = thisPos.left - parentPos.left;
+                        var y = thisPos.top - parentPos.top;
+                        var selected = $('.designContainer .Tshirtsrc').attr("src").substr(-8, 4);
+                        if (selected == "ront") {
+                            $('#text-offsetx').attr('value', x);
+                            $('#text-offsety').attr('value', y);
+                        } else {
+                            $('#text-offsetx-back').attr('value', x);
+                            $('#text-offsety-back').attr('value', y);
+                        }                
+                },
                 // on stop make current text the element to be edited
                 stop: function() {
                      textElement = $(this).find('p');
-                  }
-            });
-            
+                }
+            });           
         });
 
         // Actions to be apllayed on Texts
@@ -60,27 +79,27 @@ jQuery(document).ready(function ($) {
         });
 
         //font size using Slider based on jquery UI sliders
-         $( "#slider" ).slider({
+        $( "#slider" ).slider({
             range: "max", // set range Type
             min: 1, // set a minimum value
             max: 100, //a max value
             value: 11, // default value
             slide: function( event, ui ) { // event onslider
-                console.log("slide");
-                debugger;
                 $( ".size" ).text(ui.value + "px"); // update text on slider
-           //      if(textElement != null){ // if text element is not null
-           //      textElement.css( "font-size", ui.value); // apply value on text (font-size) using css function (jquery)
-           // }
-
-           $('.designContainer .designtext1 p').css("font-size", ui.value);
+                $('.designContainer .designtext1 p').css("font-size", ui.value);
+                var selected = $('.designContainer .Tshirtsrc').attr("src").substr(-8, 4);
+                if (selected == "ront") {
+                    $('#text-size').attr('value', ui.value);
+                } else {
+                    $('#text-size-back').attr('value', ui.value);
                 }
+            }
             });
-            $( ".size" ).text($( "#slider" ).slider( "value" ) +   "px"); // get default value from slider and show it to the user
+        $( ".size" ).text($( "#slider" ).slider( "value" ) +   "px"); // get default value from slider and show it to the user
 
             //Edit text's font - Get selected font on event Click
             //google.load('webfont','1');
-            $('#font a').click(function(){
+        $('#font a').click(function(){
                 // test if current text is not null ()
                 textElement =  $('.designContainer .designtext1 p');
                 if (textElement != null) {
@@ -101,6 +120,12 @@ jQuery(document).ready(function ($) {
                             fontactive: function(familyName, fvd) { // function if font is action and we get fontName in args
                                 // we apply font on the slelected text using css function (Jquery)
                                 textElement.css('font-family', familyName);
+                                 var selected = $('.designContainer .Tshirtsrc').attr("src").substr(-8, 4);
+                                 if (selected == "ront") {
+                                    $("#text-family").attr("value", familyName);
+                                 } else {
+                                    $("#text-family-back").attr("value", familyName);
+                                 }
                                 // remove loading annimation
                                 $('.designContainer').find(".loading").remove();
                             },
@@ -126,23 +151,26 @@ jQuery(document).ready(function ($) {
             }); 
             
             // function to get image preview on the t-shirt we don't need to upload it on the server using this function
-            var countImg = 1;
+        var countImg = 1;
         function readURL(input) {
             if (input.files && input.files[0]) { // if there is a file from input
-                var reader = new FileReader(); // read file
-                
+                var reader = new FileReader(); // read file            
                 reader.onload = function (e) { // on load
                     // add image to imagesContainer - e.target.result : image's source on local
                      $('.designContainer .imagesContainer').prepend("<div class='images' style='z-index:9" + countImg + "'><i class='icon-remove text-error'></i><img src='" + e.target.result + "' alt='' ></div>");
                      // make images draggable and resizable using jquery UI functions
                      $('.designContainer .imagesContainer').find('img').resizable({
                         resize: function( event, ui ) {
-                            console.log('resiing');
                             var height = $(".ui-wrapper").height();
                             var width  = $(".ui-wrapper").width();
-                            $('#imgHeight').attr('value', height);
-                            $('#imgWidth').attr('value', width);
-                           // console.log('h, w', height, width);
+                            var selected = $('.designContainer .Tshirtsrc').attr("src").substr(-8, 4);
+                            if (selected == "ront") {
+                                $('#imgHeight').attr('value', height);
+                                $('#imgWidth').attr('value', width);
+                            } else {
+                                $('#imgHeight-back').attr('value', height);
+                                $('#imgWidth-back').attr('value', width);
+                            }
                         }
                      });
                      $('.designContainer .imagesContainer').find('.images').draggable({
@@ -151,17 +179,27 @@ jQuery(document).ready(function ($) {
                         drag: function() {
                             var thisPos = $(".ui-wrapper").offset();
 
-                            var parentPos = $("#Tshirtsrc").offset();
+                            var parentPos = $(".designContainer .Tshirtsrc").offset();
                             var x = thisPos.left - parentPos.left;
                             var y = thisPos.top - parentPos.top;
-                            $('#offsetx').attr('value', x);
-                            $('#offsety').attr('value', y);
-                            //console.log('x, y', x, y);
+                            var selected = $('.designContainer .Tshirtsrc').attr("src").substr(-8, 4);
+                            if (selected == "ront") {
+                                $('#offsetx').attr('value', x);
+                                $('#offsety').attr('value', y);
+                            } else {
+                                $('#offsetx-back').attr('value', x);
+                                $('#offsety-back').attr('value', y);
+                            }                
                         }
                      });
-
-                    $('#imgsrc').attr('name', 'imagesrc');
-                    $('#imgsrc').attr('value', e.target.result);
+                    var selected = $('.designContainer .Tshirtsrc').attr("src").substr(-8, 4);
+                    if (selected == "ront") {
+                        $('#imgsrc').attr('name', 'imagesrc');
+                        $('#imgsrc').attr('value', e.target.result);
+                    } else {
+                        $('#imgsrc-back').attr('name', 'imagesrc-back');
+                        $('#imgsrc-back').attr('value', e.target.result);
+                    }                  
                     countImg ++;
                     //$('#blah').css('background', 'transparent url('+e.target.result +') left top no-repeat');
                 }
@@ -172,7 +210,6 @@ jQuery(document).ready(function ($) {
         $("#imgInp").on('change',function(){
             readURL(this); // call our function readURL
             //Set h,w, x, y
-
         });
 
         // delete pictures
@@ -204,8 +241,13 @@ jQuery(document).ready(function ($) {
             if(textElement != null){
                 //apply css on the text
                 textElement.css('color','#' + color);
-            }
-            
+                var selected = $('.designContainer .Tshirtsrc').attr("src").substr(-8, 4);
+                if (selected == "ront") {
+                    $('#text-color').attr('value', color);
+                } else {
+                    $('#text-color-back').attr('value', color);
+                }   
+            }      
         });
 
         //change T-shirt
@@ -213,14 +255,8 @@ jQuery(document).ready(function ($) {
             //get clicked T-shirt src
             var src = $(this).find('img').attr('src');
             //apply it on the original image to be edited
-            $('#Tshirtsrc').attr('src', src);
-            if (src == '/media/Uwhite.jpg') {
-                $('#t-color').attr('value', 'white_s.jpg');
-            } else if (src == '/media/UBlack.jpg') {
-                $('#t-color').attr('value', 'black_s.jpg');
-            } else {
-                $('#t-color').attr('value', 'grey_s.jpg');
-            }
+            $('.designContainer .Tshirtsrc').attr('src', src);
+            $('#t-color').attr('value', src);
             return false;
         });
 
@@ -233,15 +269,18 @@ jQuery(document).ready(function ($) {
             $('.designContainer').html(stg);
             $('.t-staging').html(cur);
 
-                console.log('bind resize');
                $('.designContainer .imagesContainer').find('img').resizable({
                         resize: function( event, ui ) {
-                            console.log('test');
                             var height = $(".ui-wrapper").height();
                             var width  = $(".ui-wrapper").width();
-                            $('#imgHeight').attr('value', height);
-                            $('#imgWidth').attr('value', width);
-                           // console.log('h, w', height, width);
+                            var selected = $('.designContainer .Tshirtsrc').attr("src").substr(-8, 4);
+                            if (selected == "ront") {
+                                $('#imgHeight').attr('value', height);
+                                $('#imgWidth').attr('value', width);
+                            } else {
+                                $('#imgHeight-back').attr('value', height);
+                                $('#imgWidth-back').attr('value', width);
+                            }
                         }
                      });
 
@@ -252,18 +291,38 @@ jQuery(document).ready(function ($) {
                         drag: function() {
                             var thisPos = $(".ui-wrapper").offset();
 
-                            var parentPos = $("#Tshirtsrc").offset();
+                            var parentPos = $(".designContainer .Tshirtsrc").offset();
                             var x = thisPos.left - parentPos.left;
                             var y = thisPos.top - parentPos.top;
-                            $('#offsetx').attr('value', x);
-                            $('#offsety').attr('value', y);
-                            //console.log('x, y', x, y);
+                            var selected = $('.designContainer .Tshirtsrc').attr("src").substr(-8, 4);
+                            if (selected == "ront") {
+                                $('#offsetx').attr('value', x);
+                                $('#offsety').attr('value', y);
+                            } else {
+                                $('#offsetx-back').attr('value', x);
+                                $('#offsety-back').attr('value', y);
+                            }
                         }
                      });
 
               $(function() {
             //$( ".t" ).resizable();
             $( ".designContainer .t" ).draggable({
+                drag: function() {
+                        var thisPos = $(".designContainer .t p").offset();
+
+                        var parentPos = $(".designContainer .Tshirtsrc").offset();
+                        var x = thisPos.left - parentPos.left;
+                        var y = thisPos.top - parentPos.top;
+                        var selected = $('.designContainer .Tshirtsrc').attr("src").substr(-8, 4);
+                        if (selected == "ront") {
+                            $('#text-offsetx').attr('value', x);
+                            $('#text-offsety').attr('value', y);
+                        } else {
+                            $('#text-offsetx-back').attr('value', x);
+                            $('#text-offsety-back').attr('value', y);
+                        }                
+                },
                 // on stop make current text the element to be edited
                 stop: function() {
                      textElement = $(this).find('p');
@@ -271,9 +330,6 @@ jQuery(document).ready(function ($) {
             });
             
         });
-
-
-
             return false;
         });
 
@@ -308,26 +364,10 @@ jQuery(document).ready(function ($) {
             return false;
         });
 
-        // export as DESIGN
-       
-
-
        // tooltip
         $('.font-tooltip').tooltip();
 
         $('.tooltip-show').tooltip({
           selector: "a[data-toggle=tooltip]"
         })
-     
-
-
     });
-
-
-
-
-
-
-
-
-

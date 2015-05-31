@@ -23,23 +23,60 @@ def create(request):
 	context_dict = {}
 	if request.method == 'POST':
 	
+		#Front image
 		img_src  = request.POST.get('imagesrc')
 		img_idx  = img_src.find('base64')
 		img_data = base64.b64decode(img_src[img_idx+7:])
 		img_file = open("./public/photo.jpg", "wb")
 		img_file.write(img_data)
 		img_file.close()
+		#Back image
+		imgSrcBack  = request.POST.get('imagesrc-back')
+		imgIdxBack  = imgSrcBack.find('base64')
+		imgDataBack = base64.b64decode(imgSrcBack[imgIdxBack+7:])
+		imgFileBack = open("./public/photo_back.jpg", "wb")
+		imgFileBack.write(imgDataBack)
+		imgFileBack.close()
 
+
+		#Front
 		height = int(float(request.POST.get('valueh')))
 		width  = int(float(request.POST.get('valuew')))
 		x = int(float(request.POST.get('valuex')))
 		y = int(float(request.POST.get('valuey')))
+		#Front text
+		textContent = str(request.POST.get('text-value'))
+		textSize = int(request.POST.get('text-font-size'))
+		textOffsetX = int(float(request.POST.get('text-valuex')))
+		textOffestY = int(float(request.POST.get('text-valuey')))
+		textColor = str(request.POST.get('text-color-value'))
+		textFamily = str(request.POST.get('text-font-family'))
 		t_color = request.POST.get('valuec')
-		baseim = Image.open('./public/media/' + str(t_color))
+
+		#Back
+		heightBack = int(float(request.POST.get('valueh-back')))
+		widthBack  = int(float(request.POST.get('valuew-back')))
+		xBack = int(float(request.POST.get('valuex-back')))
+		yBack = int(float(request.POST.get('valuey-back')))
+		#Back text
+		textContentBack = str(request.POST.get('text-value-back'))
+		textSizeBack = int(request.POST.get('text-font-size-back'))
+		textOffsetXBack = int(float(request.POST.get('text-valuex-back')))
+		textOffestYBack = int(float(request.POST.get('text-valuey-back')))
+		textColorBack = str(request.POST.get('text-color-value-back'))
+		textFamilyBack = str(request.POST.get('text-font-family-back'))
+
+		baseim = Image.open('./public/media/' + str(t_color) + '_front.jpg')
 		floatimg = Image.open('./public/photo.jpg')
 		resized = floatimg.resize((width, height), Image.BILINEAR)
 		baseim.paste(resized, (x, y), resized)
 		baseim.save('./public/pasted.jpg')
+
+		baseImgBack = Image.open('./public/media/' + str(t_color) + '_back.jpg')
+		floatImgBack = Image.open('./public/photo_back.jpg')
+		resizedBack = floatImgBack.resize((widthBack, heightBack), Image.BILINEAR)
+		baseImgBack.paste(resizedBack, (xBack, yBack), resizedBack)
+		baseImgBack.save('./public/pasted_back.jpg')
 
 		#create a new parent product
 		product_class = ProductClass.objects.get(pk=1)
@@ -180,7 +217,7 @@ def create(request):
 		stock5.save()
 
 		new_file = File(open('./public/pasted.jpg', 'rb'))
-		new_file_back = File(open('./public/media/' + str(t_color), 'rb'))
+		new_file_back = File(open('./public/pasted_back.jpg', 'rb'))
 		im = ProductImage(product=product, display_order=0)
 		im2 = ProductImage(product=product, display_order=1)
 		im.original.save('newtee.jpg', new_file, save=False)
