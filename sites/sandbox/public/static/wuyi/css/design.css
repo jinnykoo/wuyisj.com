@@ -198,7 +198,6 @@ ol.carousel-indicators {
 	height: 43px;
 	float: left;
 	width: 43px;
-	padding: 4px;
 	background: #fff;
 	margin: 2px 2px !important;
 	list-style: none !important;
@@ -215,4 +214,7 @@ ol.carousel-indicators {
 
 .t-staging {
 	display: none;
+}
+.wuyi-nav{
+	margin-left: 10px;
 }
