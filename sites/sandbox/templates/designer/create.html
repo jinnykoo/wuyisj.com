@@ -11,18 +11,11 @@
         <form id="create_product" method="post" action="/create/">
             {% csrf_token %}
         <div id="rootwizard">
-            <ul>
-                <li><a href="#tab1" data-toggle="tab">First</a></li>
-                <li><a href="#tab2" data-toggle="tab">Second</a></li>
+            <ul class="wuyi-nav">
+                <li><a href="#tab1" data-toggle="tab">设计Ｔ恤</a></li>
+                <li><a href="#tab2" data-toggle="tab">定价发布</a></li>
             </ul>
             <br>
-            <br>
-            <ul class="pager wizard">
-                    <li class="previous first" style="display:none;"><a href="#">First</a></li>
-                    <li class="previous"><a href="#">Previous</a></li>
-                    <li class="next last" style="display:none;"><a href="#">Last</a></li>
-                    <li class="next"><a href="#">Next</a></li>
-            </ul>
             <div class="tab-content">
                     <div class="tab-pane" id="tab1">
                         <div class="container">
@@ -33,11 +26,11 @@
                                     <div class="widget">
                                         <div class="widget-header">
                                             <i class="icon-star"></i>
-                                            <h3>Text Options</h3>
+                                            <h3>文字选项</h3>
                                         </div> <!-- /widget-header -->
                                         <div class="widget-content">   
                                         <!-- options -->
-                                            <label for="designtext"><i class=" icon-edit"></i> Enter text below</label>
+                                            <label for="designtext"><i class=" icon-edit"></i>在下面输入文字</label>
                                             <!-- Texts on T-shirt -->
                                             <div id="texts" class="clearfix">
                                                 <!-- Text where tro put text -->
@@ -48,7 +41,7 @@
                                             
                                             <hr >
 
-                                            <h5><i class="icon-zoom-in"></i> Font Size</h5>
+                                            <h5><i class="icon-zoom-in"></i> 字体大小</h5>
                                             <!-- Slider to change font size -->
                                             <div class="slider">
                                                 <!-- default value -->
@@ -59,16 +52,16 @@
 
                                             <hr> <!-- separator -->
                                             <!-- Font color to change color - <i class="icon-magic"></i> icons using Fontawesome  -->
-                                            <h5><i class="icon-magic"></i> Font Color</h5>
+                                            <h5><i class="icon-magic"></i> 字体颜色</h5>
                                             <!-- input colors -->
                                             <input id="color" type="text" class="pick-a-color">
 
                                             <hr>
                                             <!-- section to change Fonts -->
-                                            <h5><i class="icon-beaker"></i> Fonts</h5>
+                                            <h5><i class="icon-beaker"></i> 字体选项</h5>
                                             <!-- btn groupe using bootstrap - dropup : to show menu up -->
                                             <div class="btn-group dropup">              
-                                                <label class="btn">Select Font</label>
+                                                <label class="btn">选择字体</label>
                                                 <button class="btn dropdown-toggle" data-toggle="dropdown">
                                                     <span class="caret"></span>
                                                 </button>
@@ -91,17 +84,6 @@
 
                 <!-- ******** ******* ******* ***** Column #2  ******** ******* ******* ***** -->
                                 <div class="col-sm-6">     
-                                    <div class="selection">     
-                                        <ul class="t-shirts">
-                                             <li><a href="#" class="front-a" data-toggle="tooltip" data-placement="bottom" title='White T-shirt'>
-                                                <img src="/media/white_front.jpg" class="sel-img img-front" alt="White T-shirt">
-                                                </a>
-                                             </li>
-                                            <li> <a href="#" class="back-a" data-toggle="tooltip" data-placement="bottom" title='White T-shirt'>
-                                                <img src="/media/white_back.jpg" class="sel-img img-back"alt="White T-shirt">
-                                            </a></li>
-                                        </ul>
-                                    </div>
                                     <div class="designContainer" id="printable">
                                         <div class="imagesContainer"></div>
                                             <div class="text t designtext1 no-delete">
@@ -121,28 +103,27 @@
                                             </div> 
                                             <img class="imgTmp Tshirtsrc" src="/media/white_back.jpg" alt="White T-shirt">
                                     </div>
+                                    <br>
+                                    <br>
+                                    <hr>
+                                    <div class="selection">     
+                                        <ul class="t-shirts">
+                                             <li><a href="#" class="front-a" data-toggle="tooltip" data-placement="bottom" title='White T-shirt'>
+                                                <img src="/media/white_front.jpg" class="sel-img img-front" alt="White T-shirt">
+                                                </a>
+                                             </li>
+                                            <li> <a href="#" class="back-a" data-toggle="tooltip" data-placement="bottom" title='White T-shirt'>
+                                                <img src="/media/white_back.jpg" class="sel-img img-back"alt="White T-shirt">
+                                            </a></li>
+                                        </ul>
+                                    </div>
                                     <hr>
                                     <div class="navbar">
                                         <div class="navbar-inner">
                                             <ul class="nav unstyled">
                                                 <li>
-                                                    <a href="#myModal" role="button" data-toggle="modal"><i class="icon-eye-open"></i> Preview</a>
+                                                    <a href="#myModal" role="button" data-toggle="modal"><i class="icon-eye-open"></i> 预览</a>
                                                 </li>
-                                               <!--  <li class="divider-vertical"></li>
-                                                <li>
-                                                    <a href="javascript:" onclick="PrintElem("#printable")" class="print"><i class="icon-print"></i> Print</a>
-                                                </li>
-                                                <li class="divider-vertical"></li>
-                                                <li>
-                                                      <a class="dropdown-toggle export" data-toggle="dropdown" href="javascript:">
-                                                        Export
-                                                      </a>
-                                                </li>
-                                                <li class="divider-vertical"></li>
-                                                <li>
-                                                    <div class="fb-share-button"  data-type="icon_link" style="line-height: 28px;padding: 0 0 0 20px;"></div>
-                                                    
-                                                </li> -->
                                             </ul>
                                         </div>
                                     </div> 
@@ -154,13 +135,13 @@
                                     <div class="widget">
                                         <div class="widget-header">
                                             <i class="icon-star"></i>
-                                            <h3>Images Options</h3>
+                                            <h3>图片选项</h3>
                                         </div>
                                         <div class="widget-content">  
-                                            <h5><i class="icon-picture"></i> Add image</h5>
+                                            <h5><i class="icon-picture"></i> 添加图片</h5>
                                             <input type="file" id="imgInp" name="file" />
                                             <hr>
-                                            <h5><i class="icon-tags"></i> Collections</h5>
+                                            <h5><i class="icon-tags"></i> 体恤样本</h5>
                                             <ul class="tshirts unstyled clearfix tooltip-show">               
                                                 <li>
                                                     <a href="#" data-toggle="tooltip" data-placement="bottom" title='White T-shirt'>
@@ -194,12 +175,12 @@
                                                 </li>
                                             </ul>
                                             <hr>
-                                            <h5><i class="icon-cog"></i> Help</h5>
+                                           <!--  <h5><i class="icon-cog"></i> Help</h5>
                                             <p class="help">
-                                                <!-- <span class="badge badge-info"><i class="icon-edit"></i></span> : Click To edit Text or Click on the Text(font size, Font, color) <br> -->
+                                                 <span class="badge badge-info"><i class="icon-edit"></i></span> : Click To edit Text or Click on the Text(font size, Font, color) <br>
                                                 <span class="badge badge-info"><i class="icon-remove"></i></span> : Click To remove text after confirmation <br>
                                                 <span class="badge badge-info"><span class="ui-icon ui-icon-white ui-icon-gripsmall-diagonal-se"></span></span> : Drag To resize images
-                                            </p>
+                                            </p>  -->
                                         </div>
                                     </div>
                                 </div>
@@ -213,12 +194,12 @@
                                     <div id='p-image'> </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div> Product info</div> <br>  <hr>
-                                    <label class="l-form">Price:</label> <input id="price" name="proPrice"><br>
+                                    <div> 商品信息</div> <br>  <hr>
+                                    <label class="l-form">价格:</label> <input id="price" name="proPrice"><br>
                                     <br>
-                                    <label class="l-form">description:</label> <input id="desc" name="proDesc"> 
+                                    <label class="l-form">描述:</label> <input id="desc" name="proDesc"> 
                                     <br>
-                                    <button type='submit' name="submit" value="create product">create </button>
+                                    <button type='submit' name="submit" value="create product">点击发布</button>
                                 </div>
                                
                             </div>
@@ -256,7 +237,12 @@
 
                     
             </div>
-
+             <ul class="pager wizard">
+                    <li class="previous first" style="display:none;"><a href="#">First</a></li>
+                    <li class="previous"><a href="#">上一步</a></li>
+                    <li class="next last" style="display:none;"><a href="#">Last</a></li>
+                    <li class="next"><a href="#">下一步</a></li>
+            </ul>
         </div>
     </form>
     </section>
