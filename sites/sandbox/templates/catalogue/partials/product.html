@@ -13,6 +13,8 @@
                     <a href="{{ product.get_absolute_url }}"><img src="{{ thumb.url }}" alt="{{ product.get_title }}" class="thumbnail"></a>
                     {% endthumbnail %}
                 {% endwith %}
+
+                blabla
             </div>
         {% endblock %}
 
@@ -38,6 +40,7 @@
                 {% if not product.is_parent %}
                     {% include "catalogue/partials/add_to_basket_form_compact.html" %}
                 {% endif %}
+
             </div>
         {% endblock %}
     </article>

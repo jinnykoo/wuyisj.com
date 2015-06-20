@@ -36,8 +36,8 @@ class HomeView(TemplateView):
         search_context = self.search_handler.get_search_context_data(
             self.context_object_name)
 
-        search_context['products'] = search_context['object_list'][0:4]
-        search_context['object_list'] = search_context['object_list'][0:4]
+        search_context['products'] = search_context['object_list'][0:2]
+        search_context['object_list'] = search_context['object_list'][0:2]
         # logger.info(search_context['object_list'])
         # logger.info(search_context)
         ctx.update(search_context)

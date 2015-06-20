@@ -12,6 +12,8 @@
 
     <div class="navbar-collapse account-collapse collapse">
         <div class="container-fluid">
+            <div class="row">
+            <div class="col-md-12 head-border">
 
        {% include "partials/search.html" %}
         <!-- /navbar-collapse -->
@@ -63,6 +65,9 @@
                     <li><a id="login_link" href="{% url 'customer:login' %}"><i class="icon-signin"></i> {% trans "Login or register" %}</a></li>
                 {% endif %}
             </ul>
+            </div>
+            </div>
         </div>
     </div>
 </div>
+
