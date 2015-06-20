@@ -6,17 +6,13 @@
 {% block product %}
     <article class="product_pod_home">
         {% block product_image %}
-            <div class="image_container">
+            <div class="home_container">
                 {% with image=product.primary_image %}
                     
-                    <a href="{{ product.get_absolute_url }}"><img src="{{ image.original.url }}" alt="{{ product.get_title }}" class="thumbnail"></a>
+                    <a href="{{ product.get_absolute_url }}"><img src="{{ image.original.url }}" alt="{{ product.get_title }}" class="home_img"></a>
                     
                 {% endwith %}
             </div>
-        {% endblock %}
-
-        {% block product_title %}
-            <h3><a href="{{ product.get_absolute_url }}" title="{{ product.get_title }}">{{ product.get_title|truncatewords:4 }}</a></h3>
         {% endblock %}
     </article>
 {% endblock %}
