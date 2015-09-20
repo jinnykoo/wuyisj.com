@@ -1,249 +1,280 @@
-    {% extends "layout.html" %}
-    {% load staticfiles %}
+{% extends "layout_design.html" %}
+{% load staticfiles %}
 
-    {% block header %}
-    {% endblock %}
+{% block header %}
+{% endblock %}
 
-    {% block content %}
+{% block content %}
 
-
-    <section class="design-bg">
-        <form id="create_product" method="post" action="/create/">
-            {% csrf_token %}
+<section class="design-bg">
+    <form id="create_product" method="post" action="/create/">
+        {% csrf_token %}
         <div id="rootwizard">
-            <ul class="wuyi-nav">
-                <li><a href="#tab1" data-toggle="tab">设计Ｔ恤</a></li>
-                <li><a href="#tab2" data-toggle="tab">定价发布</a></li>
-            </ul>
+            <div class="container">
+                <ul class="wuyi-nav">
+                    <li><a href="#tab1" data-toggle="tab">设计Ｔ恤</a></li>
+                    <li><a href="#tab2" data-toggle="tab">定价发布</a></li>
+                </ul>
+            </div>
+            <hr>
             <br>
             <div class="tab-content">
-                    <div class="tab-pane" id="tab1">
-                        <div class="container">
-                            <div class="row">
+                <div class="tab-pane" id="tab1">
+                    <div class="container">
+                        <div class="row">
                             <!-- ******** ******* ******* ***** Column #1  ******** ******* ******* ***** -->
+                            <div class="col-md-3">
+                                <!-- widget  -->
+                                <div class="widget">
 
-                <!-- ******** ******* ******* ***** Column #2  ******** ******* ******* ***** -->
-                                <div class="col-md-6">     
-                                    <div class="designContainer" id="printable">
-                                        <div class="imagesContainer"></div>
-                                            <div class="text t designtext1 no-delete">
-                                                    <i class="icon-remove action text-error" data-action = "remove"></i>
-                                                    <p>hello world</p>
-                                                    <i class="icon-edit action" data-action = "fsontSize"></i>
-                                            </div> 
-                                            <img class="imgTmp Tshirtsrc" src="/media/white_front.jpg" alt="White T-shirt">
-                                    </div>
+                                    <ul class="nav nav-tabs">
+                                        <li class="active create"><a data-toggle="tab" href="#home">文字</a></li>
+                                        <li class="create"><a data-toggle="tab" href="#menu1">图片</a></li>
+                                    </ul>
 
-                                    <div class="t-staging">
-                                        <div class="imagesContainer"></div>
-                                            <div class="text t designtext1 no-delete">
-                                                    <i class="icon-remove action text-error" data-action = "remove"></i>
-                                                    <p>hello world</p>
-                                                    <i class="icon-edit action" data-action = "fsontSize"></i>
-                                            </div> 
-                                            <img class="imgTmp Tshirtsrc" src="/media/white_back.jpg" alt="White T-shirt">
+                                    <div class="tab-content">
+                                        <div id="home" class="tab-pane fade in active">
+                                            <div class="widget-content">   
+                                            <!-- options -->
+                                                <label for="designtext"><i class=" icon-edit"></i>在下面输入文字</label>
+                                                <!-- Texts on T-shirt -->
+                                                <div id="texts" class="clearfix">
+                                                    <!-- Text where tro put text -->
+                                                    <textarea type="text" id="designtext" name="designtext" placeholder="Text">hello world</textarea>
+                                                    <!-- button to generate new textarea disable it right now-->
+                                                    <!-- <button class="btn pull-right nexText"><i class="icon-plus"></i> New text</button> -->
+                                                </div><!-- /.text -->
+                                                
+                                                <hr >
+
+                                                <h5><i class="icon-zoom-in"></i> 字体大小</h5>
+                                                <!-- Slider to change font size -->
+                                                <div class="slider">
+                                                    <!-- default value -->
+                                                    <div class="size">12px</div>
+                                                    <!-- slider generated by jQuery UI -->
+                                                    <div id="slider"></div>
+                                                </div>
+
+                                                <hr> <!-- separator -->
+                                                <!-- Font color to change color - <i class="icon-magic"></i> icons using Fontawesome  -->
+                                                <h5><i class="icon-magic"></i> 字体颜色</h5>
+                                                <!-- input colors -->
+                                                <input id="color" type="text" class="pick-a-color">
+
+                                                <hr>
+                                                <!-- section to change Fonts -->
+                                                <h5><i class="icon-beaker"></i> 字体选项</h5>
+                                                <!-- btn groupe using bootstrap - dropup : to show menu up -->
+                                                <div class="btn-group dropup">              
+                                                    <label class="btn">选择字体</label>
+                                                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                        <ul class="dropdown-menu tooltip-show" id="font">                        
+                                                            <li>
+                                                                <a href="javascript:" data-font = "Bigelow+Rules"  data-toggle="tooltip" data-placement="right" title="Bigelow+Rules"><img src="http://99bootstrap.com/TshirtDesigner/wordpress/wp-content/uploads/2013/10/Bigelow_Rules1.png" alt="Bigelow+Rules"></a>
+                                                            </li>
+                                                                                 <li>
+                                                                <a href="javascript:" data-font = "Mrs+Sheppards"  data-toggle="tooltip" data-placement="right" title="Mrs+Sheppards"><img src="http://99bootstrap.com/TshirtDesigner/wordpress/wp-content/uploads/2013/10/Mrs+Sheppards.png" alt="Mrs+Sheppards"></a>
+                                                            </li>
+                                                                                 <li>
+                                                                <a href="javascript:" data-font = "Joti+One"  data-toggle="tooltip" data-placement="right" title="Joti+One"><img src="http://99bootstrap.com/TshirtDesigner/wordpress/wp-content/uploads/2013/10/Joti+One.png" alt="Joti+One"></a>
+                                                            </li>
+                                                         </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="menu1" class="tab-pane fade">
+                                            <div class="widget-content">   
+                                                <h5><i class="icon-picture"></i> 添加图片</h5>
+                                                <input type="file" id="imgInp" name="file" />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <br>
-                                    <br>
-                                    <hr>
-                                    <div class="selection">     
-                                        <ul class="t-shirts">
-                                             <li><a href="#" class="front-a" data-toggle="tooltip" data-placement="bottom" title='White T-shirt'>
-                                                <img src="/media/white_front.jpg" class="sel-img img-front" alt="White T-shirt">
-                                                </a>
-                                             </li>
-                                            <li> <a href="#" class="back-a" data-toggle="tooltip" data-placement="bottom" title='White T-shirt'>
-                                                <img src="/media/white_back.jpg" class="sel-img img-back"alt="White T-shirt">
-                                            </a></li>
+                                </div>
+                            </div>
+                            <!-- ******** ******* ******* ***** Column #2  ******** ******* ******* ***** -->
+                            <div class="col-md-6">     
+                                <div class="designContainer" id="printable">
+                                    <div class="imagesContainer"></div>
+                                        <div class="text t designtext1 no-delete">
+                                                <i class="icon-remove action text-error" data-action = "remove"></i>
+                                                <p>hello world</p>
+                                                <i class="icon-edit action" data-action = "fsontSize"></i>
+                                        </div> 
+                                        <div class="t-background">
+                                            <img class="imgTmp Tshirtsrc" src="/media/product_type_1_front.png" alt="White T-shirt">
+                                        </div>
+                                </div>
+
+                                <div class="t-staging">
+                                    <div class="imagesContainer"></div>
+                                        <div class="text t designtext1 no-delete">
+                                                <i class="icon-remove action text-error" data-action = "remove"></i>
+                                                <p>hello world</p>
+                                                <i class="icon-edit action" data-action = "fsontSize"></i>
+                                        </div> 
+                                        <div class="t-background">
+                                            <img class="imgTmp Tshirtsrc" src="/media/product_type_1_back.png" alt="White T-shirt">
+                                        </div>
+                                </div>
+                                <div class="selection">     
+                                    <ul class="t-shirts">
+                                         <li><a href="#" type="button" class="front-a" data-toggle="tooltip" data-placement="bottom" title='White T-shirt'>
+                                            正面
+                                            </a>
+                                         </li>
+                                        <li> <a href="#" class="back-a" data-toggle="tooltip" data-placement="bottom" title='White T-shirt'>
+                                            背面</a></li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div class="navbar">
+                                    <div class="navbar-inner">
+                                        <ul class="nav unstyled">
+                                            <li>
+                                                <a href="#myModal" role="button" data-toggle="modal"><i class="icon-eye-open"></i> 预览</a>
+                                            </li>
                                         </ul>
                                     </div>
-                                    <hr>
-                                    <div class="navbar">
-                                        <div class="navbar-inner">
-                                            <ul class="nav unstyled">
-                                                <li>
-                                                    <a href="#myModal" role="button" data-toggle="modal"><i class="icon-eye-open"></i> 预览</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div> 
-                                </div>
-                <!-- ******** ******* ******* ***** Column #3  ******** ******* ******* ***** -->
+                                </div> 
+                            </div>
+                            <!-- ******** ******* ******* ***** Column #3  ******** ******* ******* ***** -->
+                            <div class=" col-md-3">
+                                <!--Widget-->
+
+                                <div class="widget">
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active create tstyle"><a data-toggle="tab" href="#">款式和颜色</a></li>
+                                    </ul>
+                                    <div class="widget-content">  
+                                       <div class="tshirt-options">
+                                          <ul class="options item-options active nav">
+                                              <li class="item-option active">
+                                                  <p class="item-name">Teespring Premium Tee</p>
+                                                  <div class="item-overview">
+                                                  <div class="item-thumb-container item-thumb-loaded">
+                                                    <div class="thumb-background">
+                                                        <img class="item-thumb" src="http://d1b2zzpxewkr9z.cloudfront.net/images/products/apparel/product_type_1_front_small.png">
+                                                    </div>
+
+                                                  </div>
+                                                  <p class="item-qualities">Premium materials</p>
+                                                  <br>
+                                                  <div class="sizes-label">S – 5XL</div>
+                                                  </div>
+                                              </li>
+                                              <li class="item-option">
+                                                  <p class="item-name" >Hanes Tagless Tee</p><div class="item-overview">
+                                                  <div class="item-thumb-container item-thumb-loaded">
+                                                    <div class="thumb-background">
+                                                  <img class="item-thumb" src="http://d1b2zzpxewkr9z.cloudfront.net/images/products/apparel/product_type_1_front_small.png" >
+                                                  </div>
+
+                                                  </div>
+                                                  <p class="item-qualities" >Budget friendly</p>
+                                                  <div class="sizes-label" data-reactid=".p.0.2.$2.1.2">S – 5XL</div></div>
+                                              </li>
+
+                                              <li class="item-option "><p class="item-name" >American Apparel Crew</p>
+                                                  <div class="item-overview"><div class="item-thumb-container item-thumb-loaded" >
+                                                    <div class="thumb-background">
+                                                  <img class="item-thumb" src="http://d1b2zzpxewkr9z.cloudfront.net/images/products/apparel/product_type_1_front_small.png">
+                                                  </div>
+
+                                                  </div><p class="item-qualities" >Top of the line</p><div class="sizes-label">XS – 3XL</div>
+                                                  </div>
+                                              </li>
+                                          </ul>
+                                      </div>
+
+                                      <div class="item-cost">
+                                            <p class="item-cost-desc">成本费用 </p>
+                                           <label>￥</label><label>20.00</label>
+                                      </div>
+
+                                    </div>
 
 
-                                <div class=" col-md-3">
-                                      <!-- widget  -->
-                                    <div class="widget">
-                                        <div class="widget-header">
-                                            <i class="icon-star"></i>
-                                            <h3>文字选项</h3>
-                                        </div> <!-- /widget-header -->
-                                        <div class="widget-content">   
-                                        <!-- options -->
-                                            <label for="designtext"><i class=" icon-edit"></i>在下面输入文字</label>
-                                            <!-- Texts on T-shirt -->
-                                            <div id="texts" class="clearfix">
-                                                <!-- Text where tro put text -->
-                                                <textarea type="text" id="designtext" name="designtext" placeholder="Text">hello world</textarea>
-                                                <!-- button to generate new textarea disable it right now-->
-                                                <!-- <button class="btn pull-right nexText"><i class="icon-plus"></i> New text</button> -->
-                                            </div><!-- /.text -->
-                                            
-                                            <hr >
-
-                                            <h5><i class="icon-zoom-in"></i> 字体大小</h5>
-                                            <!-- Slider to change font size -->
-                                            <div class="slider">
-                                                <!-- default value -->
-                                                <div class="size">12px</div>
-                                                <!-- slider generated by jQuery UI -->
-                                                <div id="slider"></div>
-                                            </div>
-
-                                            <hr> <!-- separator -->
-                                            <!-- Font color to change color - <i class="icon-magic"></i> icons using Fontawesome  -->
-                                            <h5><i class="icon-magic"></i> 字体颜色</h5>
-                                            <!-- input colors -->
-                                            <input id="color" type="text" class="pick-a-color">
-
-                                            <hr>
-                                            <!-- section to change Fonts -->
-                                            <h5><i class="icon-beaker"></i> 字体选项</h5>
-                                            <!-- btn groupe using bootstrap - dropup : to show menu up -->
-                                            <div class="btn-group dropup">              
-                                                <label class="btn">选择字体</label>
-                                                <button class="btn dropdown-toggle" data-toggle="dropdown">
-                                                    <span class="caret"></span>
-                                                </button>
-                                                    <ul class="dropdown-menu tooltip-show" id="font">                        
-                                                        <li>
-                                                            <a href="javascript:" data-font = "Bigelow+Rules"  data-toggle="tooltip" data-placement="right" title="Bigelow+Rules"><img src="http://99bootstrap.com/TshirtDesigner/wordpress/wp-content/uploads/2013/10/Bigelow_Rules1.png" alt="Bigelow+Rules"></a>
-                                                        </li>
-                                                                             <li>
-                                                            <a href="javascript:" data-font = "Mrs+Sheppards"  data-toggle="tooltip" data-placement="right" title="Mrs+Sheppards"><img src="http://99bootstrap.com/TshirtDesigner/wordpress/wp-content/uploads/2013/10/Mrs+Sheppards.png" alt="Mrs+Sheppards"></a>
-                                                        </li>
-                                                                             <li>
-                                                            <a href="javascript:" data-font = "Joti+One"  data-toggle="tooltip" data-placement="right" title="Joti+One"><img src="http://99bootstrap.com/TshirtDesigner/wordpress/wp-content/uploads/2013/10/Joti+One.png" alt="Joti+One"></a>
-                                                        </li>
-                                                     </ul>
-                                            </div>
-                                        </div>
-                                    </div><!--Widget-->
-
-                                    <div class="widget">
-                                        <div class="widget-header">
-                                            <i class="icon-star"></i>
-                                            <h3>图片选项</h3>
-                                        </div>
-                                        <div class="widget-content">  
-                                            <h5><i class="icon-picture"></i> 添加图片</h5>
-                                            <input type="file" id="imgInp" name="file" />
-                                            <hr>
-                                            <h5><i class="icon-tags"></i> 体恤样本</h5>
-                                            <ul class="tshirts unstyled clearfix tooltip-show">               
-                                                <li>
-                                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title='White T-shirt'>
-                                                        <img src="/media/white_front.jpg" alt="White T-shirt">
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title='Tshirt 2'>
-                                                        <img src="/media/black_front.jpg" alt="Tshirt 2">
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title='tshirt 1'>
-                                                        <img src="/media/grey_front.jpg" alt="tshirt 1">
-                                                    </a>
-                                                </li>
-                                                 <li>
-                                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title='tshirt 1'>
-                                                        <img src="/media/red_front.jpg" alt="tshirt 1">
-                                                    </a>
-                                                </li>
-                                                 <li>
-                                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title='tshirt 1'>
-                                                        <img src="/media/green_front.jpg" alt="tshirt 1">
-                                                    </a>
-                                                </li>
-                                                 <li>
-                                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title='tshirt 1'>
-                                                        <img src="/media/purple_front.jpg" alt="tshirt 1">
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <hr>
-                                           <!--  <h5><i class="icon-cog"></i> Help</h5>
-                                            <p class="help">
-                                                 <span class="badge badge-info"><i class="icon-edit"></i></span> : Click To edit Text or Click on the Text(font size, Font, color) <br>
-                                                <span class="badge badge-info"><i class="icon-remove"></i></span> : Click To remove text after confirmation <br>
-                                                <span class="badge badge-info"><span class="ui-icon ui-icon-white ui-icon-gripsmall-diagonal-se"></span></span> : Drag To resize images
-                                            </p>  -->
-                                        </div>
+                                    <!--Color selector -->
+                                    <div class="item-color-picker">
+                                    <select name="colorpicker">
+                                      <option value="#7bd148">Green</option>
+                                      <option value="#5484ed">Bold blue</option>
+                                      <option value="#a4bdfc">Blue</option>
+                                      <option value="#46d6db">Turquoise</option>
+                                      <option value="#7ae7bf">Light green</option>
+                                      <option value="#51b749">Bold green</option>
+                                      <option value="#fbd75b">Yellow</option>
+                                      <option value="#ffb878">Orange</option>
+                                      <option value="#ff887c">Red</option>
+                                      <option value="#dc2127">Bold red</option>
+                                      <option value="#dbadff">Purple</option>
+                                      <option value="#e1e1e1">Gray</option>
+                                    </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="tab2">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div id='p-image'> </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div> 商品信息</div> <br>  <hr>
-                                    <label class="l-form">价格:</label> <input id="price" name="proPrice"><br>
-                                    <br>
-                                    <label class="l-form">描述:</label> <input id="desc" name="proDesc"> 
-                                    <br>
-                                    <button type='submit' name="submit" value="create product">点击发布</button>
-                                </div>
-                               
+                </div>
+                <div class="tab-pane" id="tab2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div id='p-image'> </div>
                             </div>
+                            <div class="col-sm-6">
+                                <div> 商品信息</div> <br>  <hr>
+                                <label class="l-form">价格:</label> <input id="price" name="proPrice"><br>
+                                <br>
+                                <label class="l-form">描述:</label> <input id="desc" name="proDesc"> 
+                                <br>
+                                <button type='submit' name="submit" value="create product">点击发布</button>
+                            </div>
+                           
                         </div>
                     </div>
-                    <!--Front  -->
-                    <input id='imgsrc' type='hidden' name='blabla' value="test">
-                    <input id='offsetx' type='hidden' name='valuex' value=168 >
-                    <input id='offsety' type='hidden' name='valuey' value=201 >
-                    <input id='imgHeight' type='hidden' name='valueh' value=200 >
-                    <input id='imgWidth' type='hidden' name='valuew' value=130 >
-                    <input id='t-color' type="hidden" name='valuec' value='white'>
-                    <input id='text-content' type="hidden" name='text-value' value='hello world'>
-                    <input id='text-size' type="hidden" name='text-font-size' value=18>
-                    <input id='text-offsetx' type='hidden' name='text-valuex' value=257 >
-                    <input id='text-offsety' type='hidden' name='text-valuey' value=121 >
-                    <input id='text-color' type='hidden' name='text-color-value' value="black">
-                    <input id='text-family' type='hidden' name='text-font-family' value="black">
+                </div>
+                <!--Front  -->
+                <input id='imgsrc' type='hidden' name='blabla' value="test">
+                <input id='offsetx' type='hidden' name='valuex' value=168 >
+                <input id='offsety' type='hidden' name='valuey' value=201 >
+                <input id='imgHeight' type='hidden' name='valueh' value=200 >
+                <input id='imgWidth' type='hidden' name='valuew' value=130 >
+                <input id='t-color' type="hidden" name='valuec' value='white'>
+                <input id='text-content' type="hidden" name='text-value' value='hello world'>
+                <input id='text-size' type="hidden" name='text-font-size' value=18>
+                <input id='text-offsetx' type='hidden' name='text-valuex' value=257 >
+                <input id='text-offsety' type='hidden' name='text-valuey' value=121 >
+                <input id='text-color' type='hidden' name='text-color-value' value="black">
+                <input id='text-family' type='hidden' name='text-font-family' value="black">
 
+                <!--Back -->
+                <input id='imgsrc-back' type='hidden' name='blabla-back' value="test">
+                <input id='offsetx-back' type='hidden' name='valuex-back' value=168 >
+                <input id='offsety-back' type='hidden' name='valuey-back' value=201 >
+                <input id='imgHeight-back' type='hidden' name='valueh-back' value=200 >
+                <input id='imgWidth-back' type='hidden' name='valuew-back' value=130 >
 
-
-                    <!--Back -->
-                    <input id='imgsrc-back' type='hidden' name='blabla-back' value="test">
-                    <input id='offsetx-back' type='hidden' name='valuex-back' value=168 >
-                    <input id='offsety-back' type='hidden' name='valuey-back' value=201 >
-                    <input id='imgHeight-back' type='hidden' name='valueh-back' value=200 >
-                    <input id='imgWidth-back' type='hidden' name='valuew-back' value=130 >
-
-                    <input id='text-content-back' type="hidden" name='text-value-back' value='hello world'>
-                    <input id='text-size-back' type="hidden" name='text-font-size-back' value=18>
-                    <input id='text-offsetx-back' type='hidden' name='text-valuex-back' value=257 >
-                    <input id='text-offsety-back' type='hidden' name='text-valuey-back' value=121 >
-                    <input id='text-color-back' type='hidden' name='text-color-value-back' value="black">
-                    <input id='text-family-back' type='hidden' name='text-font-family-back' value="black">
-
-                    
+                <input id='text-content-back' type="hidden" name='text-value-back' value='hello world'>
+                <input id='text-size-back' type="hidden" name='text-font-size-back' value=18>
+                <input id='text-offsetx-back' type='hidden' name='text-valuex-back' value=257 >
+                <input id='text-offsety-back' type='hidden' name='text-valuey-back' value=121 >
+                <input id='text-color-back' type='hidden' name='text-color-value-back' value="black">
+                <input id='text-family-back' type='hidden' name='text-font-family-back' value="black">
             </div>
              <ul class="pager wizard">
-                    <li class="previous first" style="display:none;"><a href="#">First</a></li>
-                    <li class="previous"><a href="#">上一步</a></li>
-                    <li class="next last" style="display:none;"><a href="#">Last</a></li>
-                    <li class="next"><a href="#">下一步</a></li>
+                <li class="previous first" style="display:none;"><a href="#">First</a></li>
+                <li class="previous"><a href="#">上一步</a></li>
+                <li class="next last" style="display:none;"><a href="#">Last</a></li>
+                <li class="next"><a href="#">下一步</a></li>
             </ul>
         </div>
     </form>
-    </section>
+</section>
   
 
 <div id="myModal" class="modal fade">
@@ -263,6 +294,20 @@
 {% block extrascripts %}
 <script type="text/javascript">
     $(document).ready(function() {
+        
+    $('select[name="colorpicker"]').simplecolorpicker();
+    $('select[name="colorpicker"]').simplecolorpicker('selectColor', '#7bd148');
+    $('select[name="colorpicker"]').simplecolorpicker('destroy');
+
+
+    $('select[name="colorpicker"]').simplecolorpicker({
+      theme: 'fontawesome'
+    }).on('change', function() {
+      $('.t-background').css('background-color', $('select[name="colorpicker"]').val());
+    });
+
+    console.log("hello wolrd");
+
     $('#rootwizard').bootstrapWizard({
         'tabClass': 'nav nav-pills',
         'onNext': function(tab, navigation, index) {
@@ -285,6 +330,6 @@
             // $('#rootwizard').find('.bar').css({width:$percent+'%'});
         }});
 });
-</script>>
+</script>
 {% endblock %}
 

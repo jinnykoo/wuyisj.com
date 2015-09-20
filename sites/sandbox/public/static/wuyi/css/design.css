@@ -194,14 +194,15 @@ ol.carousel-indicators {
 	padding-bottom: 20px;
 }
 .t-shirts li {
-	height: 43px;
 	float: left;
-	width: 43px;
 	background: #fff;
-	margin: 2px 2px !important;
+	margin: 8px !important;
 	list-style: none !important;
 	text-align: center;
-	border: 1px solid gray;
+}
+.t-shirts li a {
+	width: 50px;
+	height: 30px;
 }
 .selection {
 	height: 43px;
@@ -214,14 +215,10 @@ ol.carousel-indicators {
 .t-staging {
 	display: none;
 }
-.wuyi-nav{
-	margin-left: 10px;
-}
 .ban-map {
 	max-height: 350px;
 }
 .wuyi_container {
-	width: 1160px;
 	margin: auto;
 }
 
@@ -285,4 +282,83 @@ ol.carousel-indicators {
 .review-icon {
 	height: 20px;
 	width: 20px;
+}
+.nav-tabs > li.create {
+	width: 130px;
+}
+.nav-tabs > li.tstyle {
+	width: 265px;
+}
+.widget-content .ui-slider .ui-slider-range, .ui-progressbar-value {
+    background-image: -moz-linear-gradient(360deg, #FFF, #FFF);
+}
+.t-background {
+	background-color: white;
+	width: 520px;
+	height: 610px;
+	margin-top: -42px;
+	margin-left: 15px;
+}
+.item-thumb-container {	
+	display: inline-block;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	position: relative;
+	float: left;
+}
+.item-qualities {
+	display: inline-block;
+	width: 150px;
+	margin-bottom: 0;
+	font-size: 12px;
+	color: grey;
+}
+.item-overview {
+	padding-left: 10px;
+	padding-bottom: 10px;
+}
+.item-name {
+	margin-left: 10px;
+}
+.sizes-label {
+	display: inline-block;
+	font-size: 12px;
+	color: grey;
+}
+.item-option {
+	margin-bottom: 20px;
+}
+.thumb-background {
+	width: 33px;
+	height: 36px;
+	background-color: black;
+}
+.item-thumb {
+	margin-top: -2px;
+	width: 35px;
+	height: 40px;
+}
+.item-cost {
+	margin-top: 30px;
+	font-size: 30px;
+	color: #2878A1;
+}
+.item-cost-desc {
+	font-size: 14px;
+	color: #555;
+}
+.widget-content .tshirt-options {
+	border: 1px solid #D5D5D5;
+	border-radius: 5px;
+}
+.tshirt-options li.active {
+	background-color: #E1F3FB;
+	border: 1px solid #39ACE6;
+	border-radius: 5px;
+}
+.tshirt-options li {
+	cursor: pointer;
+}
+.item-color-picker {
+	margin-top: 20px;
 }

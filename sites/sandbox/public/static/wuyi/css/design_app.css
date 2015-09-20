@@ -20,7 +20,7 @@ hr{
   text-align: center;
   line-height: 30px;
   min-height: 200px;
-  min-height: 500px;
+  min-height: 635px;
 
 }
 .Tshirtsrc{
@@ -238,9 +238,9 @@ hr{
   padding: 20px 15px 15px;
   background: #FFF;
   border: 1px solid #D5D5D5;
+  border-top: 0px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  border-radius: 5px;
 }
 .widget .widget-header + .widget-content {
   border-top: none;
