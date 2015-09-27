@@ -326,7 +326,7 @@ ol.carousel-indicators {
 	color: grey;
 }
 .item-option {
-	margin-bottom: 20px;
+	padding-bottom: 20px;
 }
 .thumb-background {
 	width: 33px;
@@ -361,4 +361,10 @@ ol.carousel-indicators {
 }
 .item-color-picker {
 	margin-top: 20px;
+}
+.widget .nav-tabs > li > a  {
+	margin-right: -2px;
+}
+.widget .next-step {
+	width: 265px;
 }

@@ -11,15 +11,15 @@
         {% csrf_token %}
         <div id="rootwizard">
             <div class="container">
-                <ul class="wuyi-nav">
-                    <li><a href="#tab1" data-toggle="tab">设计Ｔ恤</a></li>
-                    <li><a href="#tab2" data-toggle="tab">定价发布</a></li>
+                 <ul class="nav nav-pills">
+                    <li class="active create"><a data-toggle="tab" href="#tab1">Ｔ恤设计</a></li>
+                    <li class="create"><a id="fabu" data-toggle="tab" href="#tab2">定价发布</a></li>
                 </ul>
             </div>
             <hr>
             <br>
             <div class="tab-content">
-                <div class="tab-pane" id="tab1">
+                <div class="tab-pane fade in active" id="tab1">
                     <div class="container">
                         <div class="row">
                             <!-- ******** ******* ******* ***** Column #1  ******** ******* ******* ***** -->
@@ -29,7 +29,7 @@
 
                                     <ul class="nav nav-tabs">
                                         <li class="active create"><a data-toggle="tab" href="#home">文字</a></li>
-                                        <li class="create"><a data-toggle="tab" href="#menu1">图片</a></li>
+                                        <li class="create"><a id="tupian" data-toggle="tab" href="#menu1">图片</a></li>
                                     </ul>
 
                                     <div class="tab-content">
@@ -129,7 +129,8 @@
                                             背面</a></li>
                                     </ul>
                                 </div>
-                                <hr>
+                                <br>
+<!--                                 <hr>
                                 <div class="navbar">
                                     <div class="navbar-inner">
                                         <ul class="nav unstyled">
@@ -138,7 +139,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </div> 
+                                </div> --> 
                             </div>
                             <!-- ******** ******* ******* ***** Column #3  ******** ******* ******* ***** -->
                             <div class=" col-md-3">
@@ -147,13 +148,13 @@
                                 <div class="widget">
 
                                     <ul class="nav nav-tabs">
-                                        <li class="active create tstyle"><a data-toggle="tab" href="#">款式和颜色</a></li>
+                                        <li class="active create tstyle"><a data-toggle="tab" href="#">面料和颜色</a></li>
                                     </ul>
                                     <div class="widget-content">  
                                        <div class="tshirt-options">
                                           <ul class="options item-options active nav">
-                                              <li class="item-option active">
-                                                  <p class="item-name">Teespring Premium Tee</p>
+                                              <li id="tshirt-type1" class="item-option active">
+                                                  <p class="item-name">普通纯棉</p>
                                                   <div class="item-overview">
                                                   <div class="item-thumb-container item-thumb-loaded">
                                                     <div class="thumb-background">
@@ -161,30 +162,30 @@
                                                     </div>
 
                                                   </div>
-                                                  <p class="item-qualities">Premium materials</p>
+                                                  <p class="item-qualities">100%纯棉, 穿着舒适</p>
                                                   <br>
                                                   <div class="sizes-label">S – 5XL</div>
                                                   </div>
                                               </li>
-                                              <li class="item-option">
-                                                  <p class="item-name" >Hanes Tagless Tee</p><div class="item-overview">
+                                              <li id="tshirt-type2"class="item-option">
+                                                  <p class="item-name" >丝光棉</p><div class="item-overview">
                                                   <div class="item-thumb-container item-thumb-loaded">
                                                     <div class="thumb-background">
                                                   <img class="item-thumb" src="http://d1b2zzpxewkr9z.cloudfront.net/images/products/apparel/product_type_1_front_small.png" >
                                                   </div>
 
                                                   </div>
-                                                  <p class="item-qualities" >Budget friendly</p>
-                                                  <div class="sizes-label" data-reactid=".p.0.2.$2.1.2">S – 5XL</div></div>
+                                                  <p class="item-qualities" >手感柔软，吸湿透气</p>
+                                                  <div class="sizes-label" >S – 5XL</div></div>
                                               </li>
 
-                                              <li class="item-option "><p class="item-name" >American Apparel Crew</p>
+                                              <li id="tshirt-type3" class="item-option "><p class="item-name" >纯棉双丝</p>
                                                   <div class="item-overview"><div class="item-thumb-container item-thumb-loaded" >
                                                     <div class="thumb-background">
                                                   <img class="item-thumb" src="http://d1b2zzpxewkr9z.cloudfront.net/images/products/apparel/product_type_1_front_small.png">
                                                   </div>
 
-                                                  </div><p class="item-qualities" >Top of the line</p><div class="sizes-label">XS – 3XL</div>
+                                                  </div><p class="item-qualities" >纹路清晰, 光泽亮丽</p><div class="sizes-label">XS – 3XL</div>
                                                   </div>
                                               </li>
                                           </ul>
@@ -192,7 +193,7 @@
 
                                       <div class="item-cost">
                                             <p class="item-cost-desc">成本费用 </p>
-                                           <label>￥</label><label>20.00</label>
+                                           <label>￥</label><label id="tshirt-cost">20.00</label>
                                       </div>
 
                                     </div>
@@ -200,7 +201,7 @@
 
                                     <!--Color selector -->
                                     <div class="item-color-picker">
-                                    <select name="colorpicker">
+                                        <select name="colorpicker">
                                       <option value="#7bd148">Green</option>
                                       <option value="#5484ed">Bold blue</option>
                                       <option value="#a4bdfc">Blue</option>
@@ -213,18 +214,20 @@
                                       <option value="#dc2127">Bold red</option>
                                       <option value="#dbadff">Purple</option>
                                       <option value="#e1e1e1">Gray</option>
-                                    </select>
+                                        </select>
                                     </div>
+                                    <br>
+                                    <button type="button" class="btn btn-success next-step"> 下一步 </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="tab2">
+                <div class="tab-pane fade" id="tab2">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-6">
-                                <div id='p-image'> </div>
+                                <div id='p-image'></div>
                             </div>
                             <div class="col-sm-6">
                                 <div> 商品信息</div> <br>  <hr>
@@ -266,12 +269,6 @@
                 <input id='text-color-back' type='hidden' name='text-color-value-back' value="black">
                 <input id='text-family-back' type='hidden' name='text-font-family-back' value="black">
             </div>
-             <ul class="pager wizard">
-                <li class="previous first" style="display:none;"><a href="#">First</a></li>
-                <li class="previous"><a href="#">上一步</a></li>
-                <li class="next last" style="display:none;"><a href="#">Last</a></li>
-                <li class="next"><a href="#">下一步</a></li>
-            </ul>
         </div>
     </form>
 </section>
@@ -306,29 +303,33 @@
       $('.t-background').css('background-color', $('select[name="colorpicker"]').val());
     });
 
-    console.log("hello wolrd");
+    $('#tshirt-type1').click(function () {
+        $('#tshirt-type2').removeClass('active');
+        $('#tshirt-type3').removeClass('active');
+        $(this).addClass('active');
+        $('#tshirt-cost').text('20.00');
+    });
+     $('#tshirt-type2').click(function () {
+        $('#tshirt-type1').removeClass('active');
+        $('#tshirt-type3').removeClass('active');
+        $(this).addClass('active');
+        $('#tshirt-cost').text('30.00');
+    });
+      $('#tshirt-type3').click(function () {
+        $('#tshirt-type1').removeClass('active');
+        $('#tshirt-type2').removeClass('active');
+        $(this).addClass('active');
+        $('#tshirt-cost').text('50.00');
+    });
 
-    $('#rootwizard').bootstrapWizard({
-        'tabClass': 'nav nav-pills',
-        'onNext': function(tab, navigation, index) {
-            
-        },
-        'onTabShow': function(tab, navigation, index) {
-            
-            if(index==1) {
-                if($('#p-image').html() == "") {
-                    $('.designContainer').clone().prependTo('#p-image').find('i').remove();
-                    $('.modal-body').find('.ui-icon').css('display', 'none');
-                }
-            }
-            else {
-                $('#p-image').html('');
-            }
-            // var $total = navigation.find('li').length;
-            // var $current = index+1;
-            // var $percent = ($current/$total) * 100;
-            // $('#rootwizard').find('.bar').css({width:$percent+'%'});
-        }});
+    $('.widget .next-step').click(function() {
+        if($('#p-image').html() == "") {
+            console.log('switched to next page');
+            $('.designContainer').clone().prependTo('#p-image').find('i').remove();
+            $('.modal-body').find('.ui-icon').css('display', 'none');
+        }
+        $('#fabu').click();
+    });
 });
 </script>
 {% endblock %}
